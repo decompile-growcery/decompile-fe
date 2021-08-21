@@ -25,7 +25,7 @@ export default function Navbar() {
             <AppBar className={styles.navbar} color="transparent" position="static">
                 <Toolbar>
                     <span className={styles.navbar_logo}>
-                        <Image src={logo}/>
+                        <Image src={logo} alt="logo"/>
                     </span>
                     <div>
                         <span className={styles.navbar_searchbar_icon}/>

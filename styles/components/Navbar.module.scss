@@ -1,0 +1,97 @@
+@import "../utils/colors";
+@import "../utils/fonts";
+@import "../utils/breakpoints";
+
+.navbar {
+  @include fontPrimary;
+  margin-top: 5px;
+  border: none;
+  box-shadow: none !important;
+  padding: 0 60px;
+
+  @media screen and (max-width: $mobile) {
+      align-items: flex-end;
+  }
+
+  &_shoppingCart {
+    display: none;
+    @media screen and (max-width: $mobile) {
+      & > button {
+          color: $black;
+      }
+      display: inline-block;
+      right: -30px;
+      position: absolute;
+    }
+  }
+
+  &_logo {
+    @media screen and (max-width: $mobile) {
+      display: none !important;
+    }
+  }
+
+  &_items {
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+    margin-left: auto;
+    color: $black;
+
+    > a {
+      margin-right: 20px;
+    }
+
+    > button {
+      margin-left: 10px;
+      color: black;
+    }
+  }
+
+  &_searchbar {
+    border-radius: 30px;
+    border: none;
+    margin-left: 40px;
+    width: 35vw;
+    height: 38px;
+    background: $light-green;
+    padding-left: 50px;
+    margin-right: 20px;
+
+    @media screen and (max-width: $mobile) {
+      padding-left: 20px;
+      width: 70vw;
+    }
+
+    &_icon {
+      position: absolute;
+      top: 21px;
+      left: 300px;
+      width: 21px;
+      height: 21px;
+      display: inline-block;
+      background-image: url("data:image/svg+xml,%0A%3Csvg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20L15.514 15.506L20 20ZM18 9.5C18 11.7543 17.1045 13.9163 15.5104 15.5104C13.9163 17.1045 11.7543 18 9.5 18C7.24566 18 5.08365 17.1045 3.48959 15.5104C1.89553 13.9163 1 11.7543 1 9.5C1 7.24566 1.89553 5.08365 3.48959 3.48959C5.08365 1.89553 7.24566 1 9.5 1C11.7543 1 13.9163 1.89553 15.5104 3.48959C17.1045 5.08365 18 7.24566 18 9.5V9.5Z' stroke='%23038E10' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+
+      @media screen and (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    &::placeholder {
+      color: $black;
+    }
+  }
+
+  &_mobile {
+    @media screen and (min-width: $desktop) {
+      display: none !important;
+    }
+    padding: 0 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 15px;
+    & > button {
+      color: $black !important;
+    }
+  }
+}

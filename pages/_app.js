@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import AuthProvider from '../contexts/AuthProvider'
+import AuthProvider from '../lib/contexts/AuthProvider'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

@@ -1,4 +1,4 @@
 @mixin fontPrimary ($font-weight: 400) {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     font-weight: $font-weight;
 }

@@ -1,0 +1,110 @@
+@import "../utils/colors";
+@import "../utils/breakpoints";
+@import "../utils/fonts";
+
+.login {
+  &_root {
+    background: #f2f2f2;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+  @include fontPrimary;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &_backButton {
+    & > button {
+      background-color: $dark-green;
+      color: $white;
+      position: absolute;
+      left: 430px;
+
+      @media screen and (max-width: $mobile) {
+          left: 10px;
+      }
+
+      &:hover {
+        background-color: $dark-green;
+      }
+    }
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    height: 420px ;
+    width: 400px;
+    background-color: $white;
+    padding: 24px 64px;
+    border-radius: 50px;
+    margin-top: 20px;
+
+    @media screen and (max-width: $mobile) {
+        width: calc(100vw - 20px);
+        height: 70vh;
+        margin-top: 40px;
+        padding: 24px 40px;
+    }
+
+    & > input {
+      width: 100%;
+      border: 1px solid $light-green;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 16px;
+    }
+
+    & > label {
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    &_title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 24px;
+      padding: 0;
+      margin: 0;
+    }
+
+    &_forgotPassword {
+      color: $orange;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      text-align: right;
+    }
+
+    &_submitBtn {
+      color: $white;
+      background: $darker-green;
+      border: 1px solid $light-green;
+      cursor: pointer;
+      border-radius: 20px;
+      font-size: 16px;
+      margin: 0 auto;
+      padding: 5px 55px;
+      width: fit-content;
+      font-weight: 700;
+      border: none;
+    }
+
+    &_registerPrompt {
+      font-size: 16px;
+      margin-top: 20px;
+      text-align: center;
+
+      & > a {
+        color: $orange;
+      }
+
+      & > p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

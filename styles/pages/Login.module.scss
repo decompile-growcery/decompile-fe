@@ -16,11 +16,13 @@
   justify-content: center;
   flex-direction: column;
   &_backButton {
+    display: flex;
+    justify-content: space-between;
+    
     & > button {
       background-color: $dark-green;
+      margin-right: 20px;
       color: $white;
-      position: absolute;
-      left: 430px;
 
       @media screen and (max-width: $mobile) {
           left: 10px;

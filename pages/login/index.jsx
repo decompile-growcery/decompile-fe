@@ -2,14 +2,42 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowBack } from "@material-ui/icons";
-import { IconButton, Typography } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import logo from "../../public/logo.png";
 import styles from "../../styles/pages/Login.module.scss";
+import useForm from "../../lib/hooks/useForm";
+import postData from "../../lib/utils/postData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/dist/client/router";
+import { AuthContext } from "../../lib/contexts/AuthProvider";
+import { useContext } from "react";
 
 export default function Login() {
-  const handleLogin = (e) => {
+  const router = useRouter();
+  const { setUser } = useContext(AuthContext);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-  }
+
+    const data = new URLSearchParams({
+      login: username,
+      password: password,
+    });
+
+    const [isError, response] = await postData(data, "auth/login");
+
+    if (isError) toast.error("Login failed, please try again");
+    else {
+      toast.success("Login success, redirecting...");
+      setUser(response.token);
+      router.push("/");
+    }
+  };
+
+  const [username, handleChangeUsername] = useForm("");
+  const [password, handleChangePassword] = useForm("");
+
   return (
     <div className={styles.login_root}>
       <Head>
@@ -21,6 +49,7 @@ export default function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.login}>
+        <ToastContainer />
         <div className={styles.login_backButton}>
           <Link href="/">
             <IconButton>
@@ -35,10 +64,19 @@ export default function Login() {
         </div>
         <form className={styles.login_form} onSubmit={handleLogin}>
           <p className={styles.login_form_title}>Login</p>
-          <label>Username</label>
-          <input placeholder="e.g. John Doe"/>
+          <label>Username/Email</label>
+          <input
+            value={username}
+            onChange={handleChangeUsername}
+            placeholder="e.g. John Doe"
+          />
           <label>Password</label>
-          <input type="password" placeholder="min. 8 characters"/>
+          <input
+            value={password}
+            onChange={handleChangePassword}
+            type="password"
+            placeholder="min. 8 characters"
+          />
           <div className={styles.login_form_forgotPassword}>
             <Link href="/forgot-password">
               <a>I forgot my password</a>

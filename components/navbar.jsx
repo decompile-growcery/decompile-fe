@@ -19,7 +19,7 @@ import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 
 export default function Navbar() {
-  const isAuthenticated = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <nav>
       <AppBar className={styles.navbar} color="transparent" position="static">
@@ -38,41 +38,39 @@ export default function Navbar() {
             <Link href="/">
               <a> Home </a>
             </Link>
-            { isAuthenticated &&
-                <>
-                    <Link href="/history">
-                        <a> History </a>
-                    </Link>
-                    <IconButton>
-                        <ShoppingCartOutlined />
-                    </IconButton>
-                </>
-            }
-            <Link href= { isAuthenticated ? "/account" : "/login" }>
+            {user && (
+              <>
+                <Link href="/history">
+                  <a> History </a>
+                </Link>
                 <IconButton>
-                    <AccountCircleOutlined />
+                  <ShoppingCartOutlined />
                 </IconButton>
+              </>
+            )}
+            <Link href={user ? "/account" : "/login"}>
+              <IconButton>
+                <AccountCircleOutlined />
+              </IconButton>
             </Link>
           </div>
-          { isAuthenticated &&
-          <div className={styles.navbar_shoppingCart}>
-            <IconButton>
-              <ShoppingCartOutlined />
-            </IconButton>
-          </div>
-          }
+          {user && (
+            <div className={styles.navbar_shoppingCart}>
+              <IconButton>
+                <ShoppingCartOutlined />
+              </IconButton>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
 
       <BottomNavigation className={styles.navbar_mobile}>
         <Link href="/">
-            <BottomNavigationAction icon={<HomeOutlined />} />
+          <BottomNavigationAction icon={<HomeOutlined />} />
         </Link>
-        { isAuthenticated &&
-            <BottomNavigationAction icon={<HistoryOutlined />} />
-        }
-        <Link href= { isAuthenticated ? "/account" : "/login" }>
-            <BottomNavigationAction icon={<AccountCircleOutlined />} />
+        {user && <BottomNavigationAction icon={<HistoryOutlined />} />}
+        <Link href={user ? "/account" : "/login"}>
+          <BottomNavigationAction icon={<AccountCircleOutlined />} />
         </Link>
       </BottomNavigation>
     </nav>

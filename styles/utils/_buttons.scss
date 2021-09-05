@@ -1,0 +1,6 @@
+@mixin buttonPrimary() {
+    color: $white;
+    background: $darker-green;
+    cursor: pointer;
+    font-weight: 700;
+}

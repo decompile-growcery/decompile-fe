@@ -1,0 +1,17 @@
+@import "../utils/colors";
+
+.section {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+
+    & > h3 {
+        margin-left: 10px;
+        font-size: 24px;
+        color: $darker-green;
+    }
+
+    & > svg {
+        color:  $orange;
+    }
+}

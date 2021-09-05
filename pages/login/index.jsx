@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/dist/client/router";
 import { AuthContext } from "../../lib/contexts/AuthProvider";
 import { useContext } from "react";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const router = useRouter();
@@ -27,10 +28,12 @@ export default function Login() {
 
     const [isError, response] = await postData(data, "auth/login");
 
-    if (isError) toast.error("Login failed, please try again");
-    else {
+    if (isError) {
+      toast.error("Login failed, please try again")
+    } else {
       toast.success("Login success, redirecting...");
-      setUser(response.token);
+      setUser(true);
+      Cookies.set('token', response.token);
       router.push("/");
     }
   };

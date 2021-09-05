@@ -1,0 +1,8 @@
+@import '../utils/fonts';
+@import '../utils/colors';
+
+.home {
+    @include fontPrimary;
+    padding: 0 2rem;
+    margin-top: 24px;
+}

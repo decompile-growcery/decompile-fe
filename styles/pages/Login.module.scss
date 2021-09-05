@@ -81,17 +81,13 @@
     }
 
     &_submitBtn {
-      color: $white;
-      background: $darker-green;
-      border: 1px solid $light-green;
-      cursor: pointer;
+      @include buttonPrimary;
       border-radius: 20px;
+      border: 1px solid $light-green;
       font-size: 16px;
       margin: 0 auto;
       padding: 5px 55px;
       width: fit-content;
-      font-weight: 700;
-      border: none;
     }
 
     &_registerPrompt {

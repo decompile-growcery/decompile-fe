@@ -1,0 +1,79 @@
+@import "../utils/fonts";
+@import "../utils/colors";
+@import "../utils/breakpoints";
+@import "../utils/buttons";
+
+.product {
+    @include fontPrimary;
+    padding: 0 120px;
+    margin: 80px 0;
+
+    @media screen and (max-width: $mobile) {
+        padding: 0 1rem;
+    }
+
+    &_detail {
+        @media screen and (min-width: $desktop) {
+            margin-left: 64px;
+        }
+    }
+    &_name {
+        font-size: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    &_weight {
+        color: $grey-text;
+        font-size: 18px;
+        margin: 0;
+    }
+
+    &_price {
+        margin-top: 8px;
+        margin-bottom: 0;
+        font-size: 28px;
+        color: $dark-green;
+    }
+
+    &_btn {
+        @include buttonPrimary;
+        padding: 6px 70px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 26px;
+        border: 1px solid $light-green;
+        margin-top: 24px;
+    }
+
+    &_description {
+        margin-top: 20px;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: $grey-text;
+            margin-top: 8px;
+            font-size: 18px;
+        }
+    }
+
+    &_farm {
+
+        margin-top: 20px;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: $grey-text;
+            margin-top: 8px;
+            font-size: 18px;
+        }
+    }
+}

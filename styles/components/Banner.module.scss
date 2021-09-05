@@ -1,0 +1,13 @@
+@import "../utils/breakpoints";
+
+.banner {
+    align-items: center;
+
+    &_text {
+        font-size: 20px;
+
+        @media screen and (max-width: $tablet) {
+            display: none;
+        }   
+    }
+}

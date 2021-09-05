@@ -1,15 +1,16 @@
 @import "../utils/colors";
 @import "../utils/breakpoints";
 @import "../utils/fonts";
-@import "../utils/buttons";
 
-.login {
+.register {
   &_root {
     background: #f2f2f2;
-    position: fixed;
+    max-width: 100%;
+    overflow-x: hidden;
     width: 100vw;
     height: 100vh;
   }
+
   @include fontPrimary;
   padding-top: 50px;
   display: flex;
@@ -38,7 +39,7 @@
   &_form {
     display: flex;
     flex-direction: column;
-    height: 420px ;
+    // height: 420px ;
     width: 400px;
     background-color: $white;
     padding: 24px 64px;
@@ -47,7 +48,7 @@
 
     @media screen and (max-width: $mobile) {
         width: calc(100vw - 20px);
-        height: 70vh;
+        height: fit-content;
         margin-top: 40px;
         padding: 24px 40px;
     }
@@ -82,13 +83,19 @@
     }
 
     &_submitBtn {
-      @include buttonPrimary;
-      border-radius: 20px;
+      color: $white;
+      background: $darker-green;
       border: 1px solid $light-green;
+      cursor: pointer;
+      border-radius: 20px;
       font-size: 16px;
       margin: 0 auto;
+      //
+      margin-top: 20px;
       padding: 5px 55px;
       width: fit-content;
+      font-weight: 700;
+      border: none;
     }
 
     &_registerPrompt {

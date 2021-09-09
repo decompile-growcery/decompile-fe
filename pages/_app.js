@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { AuthProvider } from "../lib/contexts/AuthProvider";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -13,9 +12,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <AuthProvider>
         <Component {...pageProps} />
-      </AuthProvider>
     </>
   );
 }

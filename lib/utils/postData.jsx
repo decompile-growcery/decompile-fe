@@ -1,9 +1,12 @@
-export default async function postData(data, url) {
+export default async function postData(data, url, token = false) {
   let isError = "";
   let result = "";
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}${url}`, {
     method: "POST",
     body: data,
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   })
     .then((res) => {
       if (res.ok) {

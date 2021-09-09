@@ -8,9 +8,7 @@ import Navbar from '../components/navbar'
 import { Disc, Award } from 'react-feather'
 import styles from '../styles/pages/Home.module.scss'
 
-export default function Home({products}) {
-  console.log(products)
-  
+export default function Home({products}) {  
   return (
     <div>
       <Head>

@@ -12,14 +12,14 @@ import {
   HomeOutlined,
   HistoryOutlined,
 } from "@material-ui/icons";
-import { AuthContext } from "../lib/contexts/AuthProvider";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
+import useUser from "../lib/hooks/useUser";
 
 export default function Navbar() {
-  const { user } = useContext(AuthContext);
+  const user = useUser();
   return (
     <nav>
       <AppBar className={styles.navbar} color="transparent" position="static">

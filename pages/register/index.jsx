@@ -10,14 +10,11 @@ import postData from "../../lib/utils/postData";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/dist/client/router";
-import { AuthContext } from "../../lib/contexts/AuthProvider";
-import { useContext } from "react";
 
 export default function Register() {
-  const router = useRouter(); //
-  const { setUser } = useContext(AuthContext);//
+  const router = useRouter(); 
 
-  const handleRegister = async (e) => { //
+  const handleRegister = async (e) => { 
     e.preventDefault();
 
     if (confirmedPassword !== password) {
@@ -33,13 +30,11 @@ export default function Register() {
         last_name: last_name,
       })
       const [isError, response] = await postData(data, "auth/register");
-      if (isError) toast.error("Register failed, please try again"); //?//
-      else { // 
+      if (isError) toast.error("Register failed, please try again");
+      else {
         toast.success("Register success, redirecting...");
-        setUser(response.token);
-        router.push("/"); //
+        router.push("/"); 
       }
-      // toast.success("Register success, redirecting...")
     };
 
   };

@@ -79,7 +79,7 @@ export async function getServerSideProps({params}) {
 
   return {
     props: {
-      product: data.data[0] || "",
+      product: data.data || "",
     }
   }
 }

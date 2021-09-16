@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -43,9 +42,11 @@ export default function Navbar() {
                 <Link href="/history">
                   <a> History </a>
                 </Link>
-                <IconButton>
-                  <ShoppingCartOutlined />
-                </IconButton>
+                <Link href="/cart">
+                  <IconButton>
+                    <ShoppingCartOutlined />
+                  </IconButton>
+                </Link>
               </>
             )}
             <Link href={user ? "/account" : "/login"}>
@@ -54,13 +55,15 @@ export default function Navbar() {
               </IconButton>
             </Link>
           </div>
-          {user && (
-            <div className={styles.navbar_shoppingCart}>
-              <IconButton>
-                <ShoppingCartOutlined />
-              </IconButton>
-            </div>
-          )}
+          {user && 
+            <Link href="/cart">
+              <div className={styles.navbar_shoppingCart}>
+                <IconButton>
+                  <ShoppingCartOutlined />
+                </IconButton>
+              </div>
+            </Link>
+          }
         </Toolbar>
       </AppBar>
 

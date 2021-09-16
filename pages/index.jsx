@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Grid } from '@material-ui/core'
 import ProductList from '../components/productList'
 import HomePageSection from '../components/homePageSection'
 import Banner from '../components/banner'

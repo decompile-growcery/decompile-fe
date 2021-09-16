@@ -1,0 +1,47 @@
+@import "../utils//colors";
+
+.cartItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    &_name {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &_quantity {
+
+        button {
+            color: $orange;
+        }
+
+        & > span {
+            background-color: $white;
+            font-size: 16px;
+            font-weight: 700;
+            border: 1px solid $orange;
+            border-radius: 5px;
+            padding: 5px 40px;
+        }
+    }
+
+    &_image {
+        border-radius: 10px;
+    }
+
+    &_delete {
+        svg{
+            color: $black;
+        }
+    }
+}

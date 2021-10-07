@@ -1,0 +1,38 @@
+@import "../utils//colors";
+
+.checkoutItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    
+    &:not(:last-child)
+    {
+        margin-bottom: 20px;
+    }
+
+    &_name {
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &_image {
+        border-radius: 10px;
+    }
+
+    &_message {
+
+        input {
+            padding-left: 10px;
+            display: block;
+            height: 30px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            margin-top: 8px;
+        }
+    }
+}

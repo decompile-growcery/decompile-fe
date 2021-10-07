@@ -10,6 +10,5 @@ export default async function useCart() {
   });
 
   const data = await res.json();
-  console.log(user);
   return data;
 }

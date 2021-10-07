@@ -21,9 +21,6 @@ import {
       <nav>
         <AppBar className={styles.farmerNavbar} color="transparent" position="static">
           <Toolbar>
-            <span className={styles.farmerNavbar_logo}>
-              <Image src={logo} alt="logo" />
-            </span>
             <p className={styles.farmerNavbar_seller}>Farmer{`'`}s Seller Center</p>
             <div className={styles.farmerNavbar_items}>
               <Link href="/">

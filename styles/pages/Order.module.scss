@@ -6,8 +6,8 @@
 .orders
 {
     @include fontPrimary;
-    padding: 0 100px;
-    margin: 20px 0;
+    // padding: 0 100px;
+    margin: 0 2vw 0 20vw;
 
     &_container
     {
@@ -19,8 +19,20 @@
     &_statusButtons
     {
       display: flex;
-      align-items: flex-end;
-      color: $dark-green;
+      align-items: right;
+      padding-bottom: 1vh;
+    }
+
+    &_line {
+        margin-bottom: 3vh;
+        color: $dark-green;
+    }
+
+    &_countOrder
+    {
+        font-size: 1vw;
+        color: $dark-green;
+        font-weight: 500;
     }
 
     &_checkout

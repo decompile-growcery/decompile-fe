@@ -30,6 +30,8 @@ export default function OrderItem({
             width={128}
             height={128}
         />
+
+      
         <div>
         <p className={styles.orderItem_name}>{product_name}</p>
         <p className={styles.orderItem_desc}>Qty: {amount}</p>

@@ -83,10 +83,7 @@ export default function Cart() {
     };
 
     const [isError, result] = await postData(JSON.stringify(data), "order", userToken);
-    console.log("ini di checkout");
-    console.log("iserror" + isError);
-    console.log("ini di checkout 2");
-    console.log(result);
+
   };
 
   return (

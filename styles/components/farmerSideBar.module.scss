@@ -7,10 +7,16 @@
   margin-top: 5px;
   border: none;
   box-shadow: none !important;
-  padding: 0 60px;
+  padding: 0 30px;
 
   @media screen and (max-width: $tablet) {
       align-items: flex-end;
+  }
+
+  &_logo {
+    @media screen and (max-width: 5vw) {
+      display: none !important;
+    }
   }
 
   &_titletext {

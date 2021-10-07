@@ -6,7 +6,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import styles from "../../styles/components/farmerSideBar.module.scss";
+import styles from "../styles/components/farmerSideBar.module.scss";
+import logo from "../public/logo.png";
+import Image from "next/image";
+import Link from "next/link";
 
 const drawerWidth = 200;
 
@@ -55,6 +58,9 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div className={styles.sidebar_item}>
       <div/>
+      <span className={styles.farmerNavbar_logo}>
+              <Image src={logo} alt="logo" />
+            </span>
       <h3 className={styles.sidebar_title}>Products</h3>
       <List className={styles.sidebar_list}>
       <ListItem button key={'my-products'}>
@@ -68,7 +74,10 @@ function ResponsiveDrawer(props) {
       <h3 className={styles.sidebar_title}>Orders</h3>
       <List>
       <ListItem button key={'my-orders'}>
-            <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Orders'} />
+        <Link href="/farm/orders">
+          <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Orders'} />
+        </Link>
+            
       </ListItem>
       </List>
     </div>

@@ -4,9 +4,12 @@ import deleteData from "../../lib/utils/deleteData";
 import CartItem from "../../components/cartItem";
 import Navbar from "../../components/navbar";
 import useUser from "../../lib/hooks/useUser";
+import { useRouter } from "next/dist/client/router";
 import styles from "../../styles/pages/Cart.module.scss";
+import Cookies from "js-cookie";
 
 export default function Cart() {
+  const router = useRouter();
   const user = useUser();
   const [cart, setCart] = useState([]);
   const [checkedAll, setCheckedAll] = useState(false);
@@ -43,7 +46,6 @@ export default function Cart() {
     });
     deleteData(data, "cart/delete", user);
     const newCart = cart.filter((c) => c.product_id !== id);
-    console.log(newCart);
     setCart(newCart);
   }
 
@@ -53,9 +55,15 @@ export default function Cart() {
 
   const handleCheckedAll = () => {
     setCheckedAll(!checkedAll);
-    const newCart = cart.map((c) => ({ ...c, checked: !c.checked }));
+    const newCart = cart.map((c) => ({ ...c, checked: !checkedAll }));
     setCart(newCart);
   };
+
+  const handleCheckout = () => {
+    const selectedItems = cart.filter((c) => c.checked === true);
+    Cookies.set('checkout', JSON.stringify(selectedItems));
+    router.push('/checkout');
+  }
 
   return (
     <div>
@@ -67,7 +75,6 @@ export default function Cart() {
         <div>
           <h1>My Shopping Cart</h1>
         </div>
-
         <div className={styles.cart_container}>
             {cart.map((c) => (
               <CartItem
@@ -97,7 +104,7 @@ export default function Cart() {
               Total ({cart.length} Products):{" "}
               <span className={styles.cart_checkout_price}>${totalCost}</span>
             </p>
-            <button className={styles.cart_checkout_button}>checkout</button>
+            <button className={styles.cart_checkout_button} onClick={handleCheckout}>checkout</button>
           </div>
         </div>
       </main>

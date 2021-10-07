@@ -16,4 +16,5 @@ You don't have to follow these steps (except number 2), but you should consider 
 1. When coloring an element in scss, try looking if the color is already available within the styles/utils/_colors.scss file. If it is, then use the variable defined there.
 2. Before pushing to master, please build the project first using `npm run build` or `yarn build`. This is to make sure that there are no errors and that the project can be deployed successfully.
 3. Before pushing, please make sure you remove all `console.log` statements made during development.
+
 The list will be updated later on if other issues comes along during development.

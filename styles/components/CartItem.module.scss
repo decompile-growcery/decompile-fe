@@ -6,7 +6,11 @@
     justify-content: space-between;
     align-items: center;
     font-size: 22px;
-    margin-bottom: 20px;
+    
+    &:not(:last-child)
+    {
+        margin-bottom: 20px;
+    }
 
     input[type=checkbox] {
         transform: scale(1.5);

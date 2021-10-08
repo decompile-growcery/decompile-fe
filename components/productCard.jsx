@@ -12,12 +12,14 @@ export default function productCard ({id, name, unitWeight, unitName, image, pri
             sm={12}
         >
             <div className={styles.productCard_content}>
-                <Image 
-                    src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}
-                    alt={`${name} image`}
-                    width={200}
-                    height={200}
-                />
+                <div className={styles.productCard_image}>
+                    <Image 
+                        src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}
+                        alt={`${name} image`}
+                        width={200}
+                        height={200}
+                    />
+                </div>
                 <h4 className={styles.productCard_name}>{name}</h4>
                 <p className={styles.productCard_weight}>{unitWeight} {unitName}</p>
                 <h4 className={styles.productCard_price}>${price}</h4>

@@ -1,0 +1,66 @@
+@import "../utils/colors";
+@import "../utils/fonts";
+@import "../utils/breakpoints";
+
+.sidebar {
+  @include fontPrimary;
+  margin-top: 5px;
+  border: none;
+  box-shadow: none !important;
+  padding: 0 30px;
+
+  @media screen and (max-width: $tablet) {
+      align-items: flex-end;
+  }
+
+  &_logo {
+    @media screen and (max-width: 5vw) {
+      display: none !important;
+    }
+  }
+
+  &_titletext {
+    margin-left: auto;
+    color: $dark-green;
+    margin-right: 20px;
+  }
+
+  &_item {
+    margin-top: 2vw;
+    margin-left: 1.5vw;
+    width: 15vw;
+    margin-right: 1.8vw;
+  }
+
+  &_title {
+    padding-left: 1.1vw;
+    color: $dark-green;
+    font-size: 1.4vw;
+    padding-bottom: 0px !important;
+  }
+
+  &_list {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+
+  &_listItem {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 0 0 0 0 !important;
+  }
+
+  &_mobile {
+    @media screen and (min-width: $desktop) {
+      display: none !important;
+    }
+    padding: 0 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+    & > button {
+      color: $black !important;
+    }
+  }
+}

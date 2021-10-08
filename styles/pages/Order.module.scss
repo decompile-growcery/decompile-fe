@@ -1,0 +1,81 @@
+@import "../utils/fonts";
+@import "../utils/buttons";
+@import "../utils/colors";
+@import "../utils/breakpoints";
+
+.orders
+{
+    @include fontPrimary;
+    // padding: 0 100px;
+    margin: 0 2vw 0 20vw;
+
+    &_container
+    {
+        border-radius: 30px;
+        padding: 24px 64px  ;
+        background-color: $grey-background;
+
+    }
+    &_statusButtons
+    {
+      display: flex;
+      align-items: right;
+      padding-bottom: 1vh;
+    }
+
+    &_line {
+        margin-bottom: 3vh;
+        color: $dark-green;
+    }
+
+    &_countOrder
+    {
+        font-size: 1vw;
+        color: $dark-green;
+        font-weight: 500;
+    }
+
+    &_checkout
+    {
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        bottom: 0;
+        width: 90vw;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        background: $white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        &_checkbox
+        {
+            transform: scale(1.5);
+            margin-right: 20px;
+        }
+        &_prompt
+        {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        &_price
+        {
+            color: $dark-green;
+            font-weight: 700;
+            font-size: 20px;
+            margin-left: 30px;
+        }
+
+        &_button
+        {
+            @include buttonPrimary;
+            font-size: 16px;
+            margin-left: 20px;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 10px;
+        }
+    }
+}

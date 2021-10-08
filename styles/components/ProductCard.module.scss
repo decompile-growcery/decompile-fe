@@ -21,6 +21,12 @@
         padding: 16px;
     }
 
+    &_image
+    {
+        display: flex;
+        justify-content: center
+    }
+
     &_btn
     {
         @include buttonPrimary;

@@ -15,6 +15,7 @@ export default function Cart() {
   const user = useUser();
   const [orderList, setOrders] = useState([]);
   const [filteredList, setFiltered] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_LINK}farm-orders`, {
@@ -27,6 +28,7 @@ export default function Cart() {
         setOrders(data.data);
         setFiltered(orderList);
         mapOrders();
+        setCount(0)
       });
   }, []);
 
@@ -34,12 +36,15 @@ export default function Cart() {
     const newOrders = orderList.filter((d) => d.status_id === id);
     setFiltered(newOrders);
     mapOrders();
+    setCount()
   };
 
   const getAllOrders = () => {
     setFiltered(orderList);
+    setCount(1)
   };
-  let orders = filteredList.map((c, i) => (
+
+  var orders = filteredList.map((c, i) => (
     <OrderItem
       key={i}
       image={c.image}
@@ -81,6 +86,7 @@ export default function Cart() {
       />
     ));
   };
+
   const CustomButton = withStyles({
     root: {
       fontFamily: "'Poppins', sans-serif !important",
@@ -98,7 +104,9 @@ export default function Cart() {
       <FarmerNavbar />
       <ResponsiveDrawer />
       <main className={styles.orders}>
-        <FarmerBreadcrumbs />
+        <FarmerBreadcrumbs
+        string2="Orders"
+        string3="My Orders" />
         <div>
           <h1>My Orders</h1>
         </div>
@@ -139,7 +147,26 @@ export default function Cart() {
             </Grid>
           </Grid>
           <hr className={styles.orders_line} />
-          {orders}
+          {count == 0? filteredList.map((c, i) => (
+              <OrderItem
+                key={i}
+                image={c.image}
+                product_name={c.product_name}
+                status={c.status}
+                price={c.price}
+                amount={c.amount}
+                note={c.note}
+                is_delivery={c.is_delivery}
+                city={c.city}
+                state={c.state}
+                postal_code={c.postal_code}
+                street_address={c.street_address}
+                weight={c.weight}
+                first_name={c.first_name}
+                last_name={c.last_name}
+              />
+            )) : orders}
+          {/* {orders} */}
         </div>
       </main>
     </div>

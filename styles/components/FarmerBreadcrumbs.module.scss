@@ -9,9 +9,16 @@
       align-items: flex-end;
   }
 
-  &_bcText {
+  &_bcTextBold {
     color: $darker-green;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 1vw;
+    font-weight: 500;
+  }
+
+  &_bcText {
+    font-size: 1vw;
+    font-family: 'Poppins', sans-serif !important;
     font-weight: 200;
   }
 

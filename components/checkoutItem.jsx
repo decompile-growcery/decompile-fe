@@ -19,7 +19,7 @@ export default function CartItem({
   }
 
   return (
-    <>
+    <div className={styles.checkoutItem_root}>
       <div className={styles.checkoutItem}>
         <Image
           className={styles.checkoutItem_image}
@@ -36,6 +36,6 @@ export default function CartItem({
         <label>Message:</label>
         <input value={message} onChange={handleChange} />
       </div>
-    </>
+    </div>
   );
 }

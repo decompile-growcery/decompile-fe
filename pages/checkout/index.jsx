@@ -9,9 +9,11 @@ import postData from "../../lib/utils/postData";
 import getData from "../../lib/utils/getData";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { useRouter } from "next/dist/client/router";
 
 export default function Cart() {
-  const userToken = useUser();
+  const user = useUser();
+  const router = useRouter();
 
   const options = {
     pickup: "pick-up",
@@ -64,7 +66,7 @@ export default function Cart() {
       0
     );
 
-    const address = await getData("address", userToken);
+    const address = await getData("address", user);
 
     const data = {
       address_id: address[0].id,
@@ -82,7 +84,12 @@ export default function Cart() {
       })),
     };
 
-    const [isError, result] = await postData(JSON.stringify(data), "order", userToken);
+    const [isError, result] = await postData(JSON.stringify(data), "order", user, true);
+
+    if (!isError) {
+      window.open(result.checkout_url, '_blank');
+      router.push("/");
+    }
 
   };
 

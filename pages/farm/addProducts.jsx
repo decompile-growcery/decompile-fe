@@ -41,9 +41,6 @@ export default function farmerProduct() {
             });
     }, []);
 
-    console.log(productList);
-    console.log(filteredList)
-
     let products = productList.map((c, i) => (
         <FarmerProductItem
             key={i}
@@ -63,7 +60,6 @@ export default function farmerProduct() {
             image_id={c.image_id}
         />
     ));
-    console.log(products);
 
     const mapProducts = () => {
         products = [];
@@ -156,21 +152,24 @@ export default function farmerProduct() {
                         <div className={styles.addProducts_productInformationContainer_uploadImage}>
                             <label>Product Images*</label>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*"  onChange={handleChangeImage}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
+									{image}
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*"  onChange={handleChangeImage}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
+									{image}
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*"  onChange={handleChangeImage}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
+									{image}
                                 </label>
                             </div>
                         </div>
@@ -255,3 +254,18 @@ export default function farmerProduct() {
         </div>
     );
 }
+
+export async function getServerSideProps() {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}category`);
+	let data = "";
+	if (res){
+		data = await res.json();
+	}
+	console.log(data.data);
+	return {
+	  props: {
+		products: data.data || "",
+	  }
+	}
+  }
+  

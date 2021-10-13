@@ -23,9 +23,11 @@ export default function Cart() {
 			</div>
 			<hr/>
 			<div>
-				<button className={styles.checkout_float_button}>
-					Go back to Homepage
-				</button>
+				<a href="/">
+					<button className={styles.checkout_float_button}>
+						Go back to Homepage
+					</button>
+				</a>
 			</div>
         </div>
       </main>

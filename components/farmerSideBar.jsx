@@ -58,7 +58,7 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div className={styles.sidebar_item}>
       <div/>
-      <span className={styles.farmerNavbar_logo}>
+      <span className={styles.sidebar_logo}>
               <Image src={logo} alt="logo" />
             </span>
       <h3 className={styles.sidebar_title}>Products</h3>

@@ -115,3 +115,18 @@ function ResponsiveDrawer(props) {
 }
 
 export default ResponsiveDrawer;
+
+
+// export async function getServerSideProps({params}) {
+//   const id = params.id;
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}farmer/${id}`);
+//   let data = "";
+//   if (res) 
+//     data = await res.json();
+
+//   return {
+//     props: {
+//       product: data.data || "",
+//     }
+//   }
+// }

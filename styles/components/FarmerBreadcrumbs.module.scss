@@ -1,0 +1,31 @@
+@import "../utils/colors";
+@import "../utils/fonts";
+@import "../utils/breakpoints";
+
+.farmerBreadcrumbs {
+  @include fontPrimary;
+
+  @media screen and (max-width: $tablet) {
+      align-items: flex-end;
+  }
+
+  &_bcText {
+    color: $darker-green;
+    font-size: 1vw;
+    font-weight: 200;
+  }
+
+  &_mobile {
+    @media screen and (min-width: $desktop) {
+      display: none !important;
+    }
+    padding: 0 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+    & > button {
+      color: $black !important;
+    }
+  }
+}

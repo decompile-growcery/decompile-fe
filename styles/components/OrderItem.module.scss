@@ -1,0 +1,49 @@
+@import "../utils//colors";
+
+.orderItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    &_name {
+        width: 100px;
+        font-size: 1vw;
+        font-weight: 700;
+        overflow-wrap: break-word;
+        // overflow: hidden;
+        white-space: initial;
+        text-overflow: ellipsis;
+    }
+
+    &_desc {
+        font-size: 0.8vw;
+        overflow-wrap: break-word;
+        white-space: initial;
+        text-overflow: ellipsis;
+    }
+    
+
+    &_descTitle {
+        font-size: 0.8vw;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        white-space: initial;
+        text-overflow: ellipsis;
+    }
+    
+    &_vl {
+        border-left: 2px solid $grey-text;
+        height: 10vh;
+      }
+
+    &_image {
+        border-radius: 10px;
+    }
+}

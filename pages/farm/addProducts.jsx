@@ -16,77 +16,14 @@ import { ToastContainer, toast } from "react-toastify";
 import useForm from "../../lib/hooks/useForm";
 import plus from "../../public/plus.png"
 import Image from "next/image";
+import Link from "next/link";
+import postData from "../../lib/utils/postData";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function farmerProduct() {
 
-    const user = useUser();
     const router = useRouter();
-
-    const [productList, setProducts] = useState([]);
-    const [filteredList, setFiltered] = useState([]);
-
-    useEffect(() => {
-        // 
-        fetch(`${process.env.NEXT_PUBLIC_API_LINK}products?user_id=${user}`, {
-            headers: {
-                Authorization: `Bearer ${user}`,
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setProducts(data.data);
-                setFiltered(productList);
-                mapProducts();
-            });
-    }, []);
-
-    console.log(productList);
-    console.log(filteredList)
-
-    let products = productList.map((c, i) => (
-        <FarmerProductItem
-            key={i}
-            image={c.image}
-            product_id={c.product_id}
-            farm_id={c.farm_id}
-            farm_name={c.farm_name}
-            farm_address={c.farm_address}
-            product_name={c.product_name}
-            product_desc={c.product_desc}
-            product_price={c.product_price}
-            unit_weight={c.unit_weight}
-            unit_name={c.unit_name}
-            stock={c.stock}
-            is_fresh={c.is_fresh}
-            discount={c.discount}
-            image_id={c.image_id}
-        />
-    ));
-    console.log(products);
-
-    const mapProducts = () => {
-        products = [];
-        products = productList.map((c, i) => (
-            <FarmerProductItem
-                key={i}
-                image={c.image}
-                product_id={c.product_id}
-                farm_id={c.farm_id}
-                farm_name={c.farm_name}
-                farm_address={c.farm_address}
-                product_name={c.product_name}
-                product_desc={c.product_desc}
-                product_price={c.product_price}
-                unit_weight={c.unit_weight}
-                unit_name={c.unit_name}
-                stock={c.stock}
-                is_fresh={c.is_fresh}
-                discount={c.discount}
-                image_id={c.image_id}
-            />
-        ));
-    };
 
     const CustomButton = withStyles({
         root: {
@@ -97,13 +34,60 @@ export default function farmerProduct() {
         },
     })((props) => <Button {...props} />);
 
+    const handleCreate = async (e) => {
+        e.preventDefault();
+
+        const body = new FormData();
+        body.append("file", image)
+        const data = new URLSearchParams({
+            category_id: category_id,
+            product_name: product_name,
+            product_desc: product_desc,
+            product_price: product_price,
+            product_image: image,
+            unit_weight: unit_weight,
+            unit_name: unit_name,
+            stock: stock,
+            is_fresh: is_fresh
+        })
+        console.log(category_id);
+        console.log(product_name);
+        console.log(product_desc);
+        console.log(product_price);
+        console.log(image);
+        console.log(unit_weight);
+        console.log(unit_name)
+        console.log(stock);
+        console.log(is_fresh);
+        const [isError, response] = await postData(data, "product")
+        if (isError) toast.error("Create product failed, please try again");
+        else {
+            toast.success("Register success, redirecting...")
+            router.push("/");
+        }
+        
+    };
+
+    const upLoadToClient = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            const i = event.target.files[0];
+
+            setImage(i);
+        }
+    }
+    const [image, setImage] = useState(null);
+
+    const [category_id, setCategoryId] = useState("1");
+    const [is_fresh, setIsFresh] = useState("true")
+
     const [product_name, handleChangeProductName] = useForm("");
     const [product_desc, handleChangeProductDesc] = useForm("");
-    const [category_id, handleChangeCategory] = useForm("");
-    const [image, handleChangeImage] = useForm("");
+    // const [category_id, handleChangeCategory] = useForm("");
     const [product_price, handleChangePrice] = useForm("");
     const [unit_weight, handleChangeWeight] = useForm("");
     const [unit_name, handleChangeUnitName] = useForm("");
+    const [stock, handleChangeStock] = useForm("");
+    // const [is_fresh, handleChangeFresh] = useForm("");
     const [country, handleChangeCountry] = useForm("");
     const [city, handleChangeCity] = useForm("");
     const [postalCode, handleChangePostCode] = useForm("");
@@ -124,7 +108,7 @@ export default function farmerProduct() {
                 <ToastContainer />
                 <FarmerBreadcrumbs />
                 <div className={styles.addProducts_productInformationContainer}>
-                    <form>
+                    <form id="createProductForm" onSubmit={handleCreate}>
 
                         <h1>Basic Information</h1>
                         <div className={styles.addProducts_productInformationContainer_productName}>
@@ -146,29 +130,31 @@ export default function farmerProduct() {
                         </div>
                         <div className={styles.addProducts_productInformationContainer_productCategory}>
                             <label>Product Category*</label>
-                            <select>
-                                <option value={category_id} onChange={handleChangeCategory}>1</option>
-                                <option value={category_id} onChange={handleChangeCategory}>2</option>
-                                <option value={category_id} onChange={handleChangeCategory}>3</option>
+                            <select value={category_id} onChange={(e) => {
+                            setCategoryId(e.target.value)
+                            }}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                         </div>
                         <h1>Media Management</h1>
                         <div className={styles.addProducts_productInformationContainer_uploadImage}>
                             <label>Product Images*</label>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" value={image} onChange={handleChangeImage}></input>
+                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
                                 <label for="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
@@ -185,18 +171,36 @@ export default function farmerProduct() {
                                 onChange={handleChangePrice}
                                 placeholder="$"
                             />
-                            <label>Unit Weight</label>
+                            <label>Unit Weight*</label>
                             <input
                                 value={unit_weight}
                                 onChange={handleChangeWeight}
                                 placeholder=""
                             />
-                            <label>Unit Name</label>
+                            <label>Unit Name*</label>
                             <input
                                 value={unit_name}
                                 onChange={handleChangeUnitName}
                                 placeholder=""
                             />
+                        </div>
+
+                        <div className={styles.addProducts_productInformationContainer_stock}>
+                            <label>Stock*</label>
+                            <input
+                                value={stock}
+                                onChange={handleChangeStock}
+                            />
+                        </div>
+
+                        <div className={styles.addProducts_productInformationContainer_isFresh}>
+                            <label>Is Fresh*</label>
+                            <select value={is_fresh} onChange={(e) => {
+                            setIsFresh(e.target.value)
+                            }}>
+                                <option value="true" onChange={setIsFresh}>true</option>
+                                <option value="false" onChange={setIsFresh}>false</option>
+                            </select>
                         </div>
 
                         <h1>Shipping Information</h1>
@@ -246,7 +250,17 @@ export default function farmerProduct() {
                                 placeholder="Availablity"
                             />
                         </div>
-                        <button className={styles.addProducts_productInformationContainer_submitBtn}>Save and Publish</button>
+                        <div className={styles.addProducts_productInformationContainer_endBtn}>
+                            <button className={styles.addProducts_productInformationContainer_endBtn_cancelBtn}>
+                                <Link href="/farm/farmerProducts">
+                                    <a>Cancel</a>
+                                </Link>
+                            </button>
+                            <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_submitBtn}>
+                                Save and Publish
+                            </button>
+                        </div>
+
                     </form>
 
                 </div>

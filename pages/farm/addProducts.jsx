@@ -235,24 +235,22 @@ export default function farmerProduct() {
                                     placeholder="Postal Code"
                                 />
                             </div>
-                            
+
 
                         </div>
                         <div className={styles.addProducts_productInformationContainer_availability}>
-                        <label>Delivery Availablity</label>
+                            <label>Delivery Availablity</label>
                             <input
-                                    value={availablity}
-                                    onChange={handleChangeAvailablity}
-                                    placeholder="Availablity"
-                                />
+                                value={availablity}
+                                onChange={handleChangeAvailablity}
+                                placeholder="Availablity"
+                            />
                         </div>
-
+                        <button className={styles.addProducts_productInformationContainer_submitBtn}>Save and Publish</button>
                     </form>
 
                 </div>
-                <script>
-                    const inpFile = document
-                </script>
+
             </main>
         </div>
     );

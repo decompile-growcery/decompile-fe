@@ -172,6 +172,11 @@
                 padding: 5px;
             }
         }
+
+        &_submitBtn
+        {
+            background-color: darkgreen;
+        }
     }
     &_statusButtons {
         display: flex;

@@ -1,0 +1,38 @@
+@import "../utils/fonts";
+@import "../utils/colors";
+@import "../utils/buttons";
+
+.account
+{
+    @include fontPrimary;
+    padding: 0 64px;
+
+    &_field
+    {
+        p
+        {
+            display: inline-block;
+        }
+
+        &_key
+        {
+            font-weight: bold;
+            width: 200px;
+        }
+
+        &_value
+        {
+            margin-left: 90px;
+        }
+    }
+    &_button
+    {
+        @include buttonPrimary;
+        border-radius: 10px;
+        border: none;
+        font-size: 18px;
+        padding: 5px 55px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+}

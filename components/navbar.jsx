@@ -4,6 +4,8 @@ import {
   IconButton,
   BottomNavigation,
   BottomNavigationAction,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 import {
   ShoppingCartOutlined,
@@ -11,14 +13,30 @@ import {
   HomeOutlined,
   HistoryOutlined,
 } from "@material-ui/icons";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 import useUser from "../lib/hooks/useUser";
+import { useRouter } from "next/dist/client/router";
+import Cookies from "js-cookie";
 
 export default function Navbar() {
+  const router = useRouter();
   const user = useUser();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    Cookies.remove('token');
+    router.push("/");
+  }
   return (
     <nav>
       <AppBar className={styles.navbar} color="transparent" position="static">
@@ -49,13 +67,11 @@ export default function Navbar() {
                 </Link>
               </>
             )}
-            <Link href={user ? "/account" : "/login"}>
-              <IconButton>
-                <AccountCircleOutlined />
-              </IconButton>
-            </Link>
+            <IconButton onClick={handleClick}>
+              <AccountCircleOutlined />
+            </IconButton>
           </div>
-          {user && 
+          {user && (
             <Link href="/cart">
               <div className={styles.navbar_shoppingCart}>
                 <IconButton>
@@ -63,9 +79,37 @@ export default function Navbar() {
                 </IconButton>
               </div>
             </Link>
-          }
+          )}
         </Toolbar>
       </AppBar>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        className={styles.navbar_dropdown}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        {!user ? (
+          <>
+            <Link href="/login">
+              <MenuItem>Login</MenuItem>
+            </Link>
+            <Link href="/register">
+              <MenuItem>Register</MenuItem>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/account">
+              <MenuItem>My Account</MenuItem>
+            </Link>
+              <MenuItem>My Farm</MenuItem>
+              <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
+          </>
+        )}
+      </Menu>
 
       <BottomNavigation className={styles.navbar_mobile}>
         <Link href="/">

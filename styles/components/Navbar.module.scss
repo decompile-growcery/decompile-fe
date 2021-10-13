@@ -82,6 +82,14 @@
     }
   }
 
+  &_dropdown {
+    top: -10px !important;
+  }
+
+  &_logout {
+    color: #f00 !important;
+  }
+
   &_mobile {
     @media screen and (min-width: $desktop) {
       display: none !important;

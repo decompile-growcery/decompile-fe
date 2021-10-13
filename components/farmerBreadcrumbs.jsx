@@ -19,7 +19,7 @@ export default function FarmerBreadcrumbs() {
   return (
     <div className={classes.root}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-          <p>Farmer's Dashboard</p>
+          <p>Farmer&apos;s Dashboard</p>
           <p>Orders</p>
           <p className={styles.farmerBreadcrumbs_bcText}>My Orders</p>
       </Breadcrumbs>

@@ -47,6 +47,7 @@ export default function Cart() {
   var orders = filteredList.map((c, i) => (
     <OrderItem
       key={i}
+      order_id={c.order_id}
       image={c.image}
       product_name={c.product_name}
       status={c.status}
@@ -69,8 +70,11 @@ export default function Cart() {
     orders = filteredList.map((c, i) => (
       <OrderItem
         key={i}
+        index={i}
+        order_id={c.order_id}
         image={c.image}
         product_name={c.product_name}
+        status_id = {c.status_id}
         status={c.status}
         price={c.price}
         amount={c.amount}
@@ -147,25 +151,26 @@ export default function Cart() {
             </Grid>
           </Grid>
           <hr className={styles.orders_line} />
-          {count == 0? filteredList.map((c, i) => (
-              <OrderItem
-                key={i}
-                image={c.image}
-                product_name={c.product_name}
-                status={c.status}
-                price={c.price}
-                amount={c.amount}
-                note={c.note}
-                is_delivery={c.is_delivery}
-                city={c.city}
-                state={c.state}
-                postal_code={c.postal_code}
-                street_address={c.street_address}
-                weight={c.weight}
-                first_name={c.first_name}
-                last_name={c.last_name}
-              />
-            )) : orders}
+          {count == 0? filteredList.map((c, i) => { 
+            <OrderItem
+            key={i}
+            order_id={c.order_id}
+            image={c.image}
+            product_name={c.product_name}
+            status={c.status}
+            price={c.price}
+            amount={c.amount}
+            note={c.note}
+            is_delivery={c.is_delivery}
+            city={c.city}
+            state={c.state}
+            postal_code={c.postal_code}
+            street_address={c.street_address}
+            weight={c.weight}
+            first_name={c.first_name}
+            last_name={c.last_name}
+          />
+          }) : orders}
           {/* {orders} */}
         </div>
       </main>

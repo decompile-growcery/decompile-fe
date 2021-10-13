@@ -19,7 +19,7 @@ export default function FarmerBreadcrumbs({string2, string3}) {
   return (
     <div className={classes.root}>
       <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
-          <p className={styles.farmerBreadcrumbs_bcText}>Farmer's Dashboard</p>
+          <p className={styles.farmerBreadcrumbs_bcText}>Farmer&#39;s Dashboard</p>
           <p className={styles.farmerBreadcrumbs_bcText}>{string2}</p>
           <p className={styles.farmerBreadcrumbs_bcTextBold}>{string3}</p>
       </Breadcrumbs>

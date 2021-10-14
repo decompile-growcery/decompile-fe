@@ -105,8 +105,10 @@ export default function Navbar() {
             <Link href="/account">
               <MenuItem>My Account</MenuItem>
             </Link>
-              <MenuItem>My Farm</MenuItem>
-              <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
+            <Link href="/farm/orders">
+            <MenuItem>My Farm</MenuItem>
+            </Link>
+            <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
           </>
         )}
       </Menu>

@@ -2,7 +2,7 @@
 @import "../utils/fonts";
 @import "../utils/breakpoints";
 
-.farmerBreadcrumbs {
+.editOrder {
   @include fontPrimary;
 
   @media screen and (max-width: $tablet) {
@@ -10,16 +10,38 @@
   }
 
   &_bcTextBold {
-    color: $darker-green;
+    text-transform: capitalize;
+    font-size: 1.5vw;
     font-family: 'Poppins', sans-serif !important;
-    font-size: 1vw;
     font-weight: 500;
+    color: $darker-green;
   }
 
   &_bcText {
-    font-size: 1vw;
+    text-transform: capitalize;
+    font-size: 0.8vw;
     font-family: 'Poppins', sans-serif !important;
-    font-weight: 200;
+    font-weight: 400;
+  }
+
+  &_descText {
+    font-size: 0.8vw;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400;
+  }
+
+  &_buttonTextOk {
+    font-size: 0.6vw;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500;
+    color: $darker-green;
+  }
+
+  &_buttonTextCancel {
+    font-size: 0.6vw;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500;
+    color: red;
   }
 
   &_mobile {

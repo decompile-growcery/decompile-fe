@@ -13,16 +13,34 @@
     }
 
     &_name {
-        width: 100px;
-        font-size: 1vw;
+        width: 5.5vw;
+        font-size: 0.8vw;
         font-weight: 700;
         overflow-wrap: break-word;
-        // overflow: hidden;
         white-space: initial;
         text-overflow: ellipsis;
     }
 
     &_desc {
+        width: 5vw;
+        padding-right: 0.3vw;
+        font-size: 0.8vw;
+        overflow-wrap: break-word;
+        white-space: initial;
+        text-overflow: ellipsis;
+    }
+
+    &_orderId {
+        width: 4vw;
+        font-size: 0.8vw;
+        overflow-wrap: break-word;
+        white-space: initial;
+        text-overflow: ellipsis;
+    }
+
+    &_orderIdBold {
+        width: 4vw;
+        font-weight: 700;
         font-size: 0.8vw;
         overflow-wrap: break-word;
         white-space: initial;
@@ -31,6 +49,7 @@
     
 
     &_descTitle {
+        width: 5vw;
         font-size: 0.8vw;
         font-weight: 500;
         overflow-wrap: break-word;
@@ -44,6 +63,7 @@
       }
 
     &_image {
-        border-radius: 10px;
+        padding-right: 0.3vw;
+        max-width: 3vw;
     }
 }

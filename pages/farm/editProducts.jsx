@@ -258,7 +258,10 @@ export default function farmerProduct() {
                                 </Link>
                             </button>
                             <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_submitBtn}>
-                                Save and Publish
+                                Save Changes
+                            </button>
+                            <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_deleteBtn}>
+                                Delete Product
                             </button>
                         </div>
 

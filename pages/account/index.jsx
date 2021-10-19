@@ -17,7 +17,6 @@ export default function Account() {
       .then((response) => response.json())
       .then((data) => setUser(data.data[0]));
   }, []);
-  console.log(user);
   return (
     <div>
       <Head>

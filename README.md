@@ -15,5 +15,5 @@ You don't have to follow these steps (except number 2 & 4), but you should consi
 
 1. When coloring an element in scss, try looking if the color is already available within the styles/utils/_colors.scss file. If it is, then use the variable defined there.
 2. Before pushing to master, please build the project first using `npm run build` or `yarn build`. This is to make sure that there are no errors and that the project can be deployed successfully.
-3. Before pushing, please make sure you remove all `console.log` statements made during development.
+3. Before pushing, please make sure you remove all `console.log` statements and comments made during development.
 4. In order for the frontend to connect with the backend, you will need to setup some environment variables. Create a file called .env.local and declare a variable called `NEXT_PUBLIC_API_LINK` and set it to be the backend URL.

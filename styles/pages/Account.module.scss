@@ -28,11 +28,12 @@
     &_button
     {
         @include buttonPrimary;
+        display: block;
+        width: fit-content;
         border-radius: 10px;
         border: none;
         font-size: 18px;
         padding: 5px 55px;
-        margin: 0 auto;
         margin-top: 20px;
     }
 }

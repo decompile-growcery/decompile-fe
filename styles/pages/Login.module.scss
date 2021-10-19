@@ -19,14 +19,14 @@
   &_backButton {
     display: flex;
     justify-content: space-between;
-    
+
     & > button {
       background-color: $dark-green;
       margin-right: 20px;
       color: $white;
 
       @media screen and (max-width: $mobile) {
-          left: 10px;
+        left: 10px;
       }
 
       &:hover {
@@ -38,7 +38,7 @@
   &_form {
     display: flex;
     flex-direction: column;
-    height: 420px ;
+    height: 420px;
     width: 400px;
     background-color: $white;
     padding: 24px 64px;
@@ -46,10 +46,10 @@
     margin-top: 20px;
 
     @media screen and (max-width: $mobile) {
-        width: calc(100vw - 20px);
-        height: 70vh;
-        margin-top: 40px;
-        padding: 24px 40px;
+      width: calc(100vw - 20px);
+      height: 70vh;
+      margin-top: 40px;
+      padding: 24px 40px;
     }
 
     & > input {

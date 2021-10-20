@@ -29,12 +29,17 @@ export default function Register() {
         first_name: first_name,
         last_name: last_name,
       })
+      console.log(username);
+      console.log(password);
+      console.log(first_name);
+      console.log(last_name);
       const [isError, response] = await postData(data, "auth/register");
       if (isError) toast.error("Register failed, please try again");
       else {
         toast.success("Register success, redirecting...");
         router.push("/"); 
       }
+      
     };
 
   };

@@ -1,30 +1,39 @@
+import { Grid } from "@material-ui/core";
+// import Head from "next/head";
+import Image from "next/image"
+import Navbar from "../../../components/navbar";
+// import useUser from "../../../lib/hooks/useUser";
+// import styles from "../../../styles/pages/Product.module.scss";
+import postData from "../../../lib/utils/postData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import FarmerProductItem from "../../components/farmerProductItem";
-import useUser from "../../lib/hooks/useUser";
+import FarmerProductItem from "../../../components/farmerProductItem";
+import useUser from "../../../lib/hooks/useUser";
 // import styles from "../../styles/pages/Order.module.scss";
-import styles from "../../styles/pages/AddProduct.module.scss"
-import FarmerNavbar from "../../components/farmNavbar";
-import FarmerBreadcrumbs from "../../components/farmerBreadcrumbs";
-import ResponsiveDrawer from "../../components/farmerSideBar";
-import Grid from "@material-ui/core/Grid";
+import styles from "../../../styles/pages/AddProduct.module.scss"
+import FarmerNavbar from "../../../components/farmNavbar";
+import FarmerBreadcrumbs from "../../../components/farmerBreadcrumbs";
+import ResponsiveDrawer from "../../../components/farmerSideBar";
+// import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/dist/client/router";
-import { ToastContainer, toast } from "react-toastify";
-import useForm from "../../lib/hooks/useForm";
-import plus from "../../public/plus.png"
-import Image from "next/image";
+// import { ToastContainer, toast } from "react-toastify";
+import useForm from "../../../lib/hooks/useForm";
+import plus from "../../../public/plus.png"
+// import Image from "next/image";
 import Link from "next/link";
-import postData from "../../lib/utils/postData";
+// import postData from "../../lib/utils/postData";
 import "react-toastify/dist/ReactToastify.css";
 
-
-export default function farmerProduct() {
+export default function editProduct({product}) {
 
     const router = useRouter();
     const user = useUser();
+    console.log(product);
 
     const CustomButton = withStyles({
         root: {
@@ -45,7 +54,7 @@ export default function farmerProduct() {
             product_name: product_name,
             product_desc: product_desc,
             product_price: product_price,
-            product_image: body,
+            product_image: image,
             unit_weight: unit_weight,
             unit_name: unit_name,
             stock: stock,
@@ -55,7 +64,7 @@ export default function farmerProduct() {
         console.log(product_name);
         console.log(product_desc);
         console.log(product_price);
-        console.log(body);
+        console.log(image);
         console.log(unit_weight);
         console.log(unit_name);
         console.log(stock);
@@ -67,20 +76,18 @@ export default function farmerProduct() {
             toast.success("Register success, redirecting...")
             router.push("/");
         }
-        
     };
 
     const upLoadToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
+
             setImage(i);
         }
     }
     const [image, setImage] = useState(null);
-
     const [category_id, setCategoryId] = useState("1");
     const [is_fresh, setIsFresh] = useState("true")
-
     const [product_name, handleChangeProductName] = useForm("");
     const [product_desc, handleChangeProductDesc] = useForm("");
     // const [category_id, handleChangeCategory] = useForm("");
@@ -95,8 +102,6 @@ export default function farmerProduct() {
     const [addressLine1, handleChangeAddressLine1] = useForm("");
     const [addressLine2, handleChangeAddressLine2] = useForm("");
     const [availablity, handleChangeAvailablity] = useForm("");
-
-
 
     return (
         <div>
@@ -115,7 +120,7 @@ export default function farmerProduct() {
                         <div className={styles.addProducts_productInformationContainer_productName}>
                             <label>Product Name*</label>
                             <input
-                                value={product_name}
+                                value={product.product_name}
                                 onChange={handleChangeProductName}
                                 placeholder="0/100  "
                             />
@@ -123,7 +128,7 @@ export default function farmerProduct() {
                         <div className={styles.addProducts_productInformationContainer_productDesc}>
                             <label>Product Description*</label>
                             <textarea
-                                value={product_desc}
+                                value={product.product_desc}
                                 onChange={handleChangeProductDesc}
                                 placeholder="0/3000 "
                                 rows="12"
@@ -143,19 +148,40 @@ export default function farmerProduct() {
                         <div className={styles.addProducts_productInformationContainer_uploadImage}>
                             <label>Product Images*</label>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
+                                <input 
+                                type="file" 
+                                id="file" 
+                                accept="image/*" 
+                                name="myImage" 
+                                onChange={upLoadToClient}
+                                value={product.image}
+                                ></input>
                                 <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
+                                <input 
+                                type="file" 
+                                id="file" 
+                                accept="image/*" 
+                                name="myImage" 
+                                onChange={upLoadToClient}
+                                // value={product.image}
+                                ></input>
                                 <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
+                                <input 
+                                type="file" 
+                                id="file" 
+                                accept="image/*" 
+                                name="myImage" 
+                                onChange={upLoadToClient}
+                                // value={product.image}
+                                ></input>
                                 <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
@@ -168,19 +194,19 @@ export default function farmerProduct() {
 
                             <label>Unit Price*</label>
                             <input
-                                value={product_price}
+                                value={product.product_price}
                                 onChange={handleChangePrice}
                                 placeholder="$"
                             />
                             <label>Unit Weight*</label>
                             <input
-                                value={unit_weight}
+                                value={product.unit_weight}
                                 onChange={handleChangeWeight}
                                 placeholder=""
                             />
                             <label>Unit Name*</label>
                             <input
-                                value={unit_name}
+                                value={product.unit_name}
                                 onChange={handleChangeUnitName}
                                 placeholder=""
                             />
@@ -189,7 +215,7 @@ export default function farmerProduct() {
                         <div className={styles.addProducts_productInformationContainer_stock}>
                             <label>Stock*</label>
                             <input
-                                value={stock}
+                                value={product.stock}
                                 onChange={handleChangeStock}
                             />
                         </div>
@@ -269,4 +295,18 @@ export default function farmerProduct() {
             </main>
         </div>
     );
+}
+
+export async function getServerSideProps({params}) {
+  const id = params.id;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}product/${id}`);
+  let data = "";
+  if (res) 
+    data = await res.json();
+
+  return {
+    props: {
+      product: data.data || "",
+    }
+  }
 }

@@ -95,7 +95,7 @@ export default function farmerProductItem({
         </div>  */}
 
       <div>
-        <Link href="/">
+        <Link href={`/farm/edit/${product_id}`}>
           Edit
         </Link>
       </div>

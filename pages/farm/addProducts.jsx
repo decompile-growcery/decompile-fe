@@ -24,6 +24,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function farmerProduct() {
 
     const router = useRouter();
+    const user = useUser();
 
     const CustomButton = withStyles({
         root: {
@@ -56,10 +57,11 @@ export default function farmerProduct() {
         console.log(product_price);
         console.log(image);
         console.log(unit_weight);
-        console.log(unit_name)
+        console.log(unit_name);
         console.log(stock);
         console.log(is_fresh);
-        const [isError, response] = await postData(data, "product")
+        console.log(user);
+        const [isError, response] = await postData(data, "product", user)
         if (isError) toast.error("Create product failed, please try again");
         else {
             toast.success("Register success, redirecting...")
@@ -143,19 +145,19 @@ export default function farmerProduct() {
                             <label>Product Images*</label>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
                                 <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
                                 <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
                                 <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
                                 </label>
                             </div>

@@ -19,7 +19,8 @@ import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 import useUser from "../lib/hooks/useUser";
-import { useRouter } from "next/dist/client/router";
+import searchResult from "./searchResult";
+import { Router, useRouter } from "next/dist/client/router";
 import Cookies from "js-cookie";
 
 export default function Navbar() {
@@ -34,43 +35,35 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   const handleLogout = () => {
-    Cookies.remove('token');
+    Cookies.remove("token");
     router.push("/");
-  }
+  };
 
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState("");
 
-  console.log(filteredData);
   const handleFilter = (event) => {
-
-    setSearchWord(event.target.value)
-    console.log(searchWord)
+    setSearchWord(event.target.value);
     const productInformation = searchResult(searchWord);
-    //source: https://stackoverflow.com/questions/38884522/why-is-my-asynchronous-function-returning-promise-pending-instead-of-a-val/38884856#38884856
-    productInformation.then(function(result) {
-      console.log(result)
+    productInformation.then(function (result) {
       if (searchWord === "") {
         setFilteredData([]);
       } else {
-        setFilteredData(result.props.productName)
+        setFilteredData(result.props.productName);
       }
-    })
-  }
+    });
+  };
 
-  //source: https://stackoverflow.com/questions/59888514/next-js-how-to-submit-a-form-to-another-page
-  const preventDefault = f => e => {
-    e.preventDefault()
-    f(e)
-  }
+  const preventDefault = (f) => (e) => {
+    e.preventDefault();
+    f(e);
+  };
 
   const searchSubmit = preventDefault(() => {
     router.push({
-      pathname: `/productSearchResult/${searchWord}`
-    })
-  })
-
-  console.log(searchWord);
+      pathname: `/productSearchResult/${searchWord}`,
+    });
+  });
 
   return (
     <nav>
@@ -85,22 +78,20 @@ export default function Navbar() {
               className={styles.navbar_searchbar}
               placeholder="Search your favourite vegies here..."
               onChange={handleFilter}
-              // onKeyPress= {(e) => handleKeyDown(e)}
             />
-            {filteredData.length !=0 &&
-              (<div className={styles.navbar_searchbar_dataResult}>
+            {filteredData.length != 0 && (
+              <div className={styles.navbar_searchbar_dataResult}>
                 {
-                  (
-                    <Link href={`/productSearchResult/${searchWord}`}>
-                    <a className={styles.navbar_searchbar_dataResult_productItem}>
+                  <Link href={`/productSearchResult/${searchWord}`}>
+                    <a
+                      className={styles.navbar_searchbar_dataResult_productItem}
+                    >
                       <p>{filteredData}</p>
                     </a>
-                    </Link>
-                  )
+                  </Link>
                 }
               </div>
-              )
-            }
+            )}
           </form>
           <div className={styles.navbar_items}>
             <Link href="/">
@@ -122,6 +113,7 @@ export default function Navbar() {
               <AccountCircleOutlined />
             </IconButton>
           </div>
+
           {user && (
             <Link href="/cart">
               <div className={styles.navbar_shoppingCart}>
@@ -156,8 +148,12 @@ export default function Navbar() {
             <Link href="/account">
               <MenuItem>My Account</MenuItem>
             </Link>
+            <Link href="/farm/farmerProducts">
               <MenuItem>My Farm</MenuItem>
-              <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
+            </Link>
+            <MenuItem onClick={handleLogout} className={styles.navbar_logout}>
+              Logout
+            </MenuItem>
           </>
         )}
       </Menu>
@@ -174,4 +170,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

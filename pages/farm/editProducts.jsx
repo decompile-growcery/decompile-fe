@@ -24,7 +24,6 @@ import "react-toastify/dist/ReactToastify.css";
 export default function FarmerProduct() {
 
     const router = useRouter();
-    const user = useUser();
 
     const CustomButton = withStyles({
         root: {
@@ -39,45 +38,28 @@ export default function FarmerProduct() {
         e.preventDefault();
 
         const body = new FormData();
-
-        body.append("category_id", category_id);
-        body.append("product_name", product_name);
-        body.append("product_desc", product_desc);
-        body.append("product_price", product_price);
-        body.append("product_image", image);
-        body.append("unit_weight", unit_weight);
-        body.append("unit_name", unit_name);
-        body.append("stock", stock);
-        body.append("is_fresh", is_fresh);
-
-        // const data = new URLSearchParams({
-        //     category_id: category_id,
-        //     product_name: product_name,
-        //     product_desc: product_desc,
-        //     product_price: product_price,
-        //     product_image: image,
-        //     unit_weight: unit_weight,
-        //     unit_name: unit_name,
-        //     stock: stock,
-        //     is_fresh: is_fresh
-        // })
-        // const data = new URLSearchParams ({
-        //     category_id: body.get("category_id"),
-
-        // })
-
+        body.append("file", image)
+        const data = new URLSearchParams({
+            category_id: category_id,
+            product_name: product_name,
+            product_desc: product_desc,
+            product_price: product_price,
+            product_image: image,
+            unit_weight: unit_weight,
+            unit_name: unit_name,
+            stock: stock,
+            is_fresh: is_fresh
+        })
         console.log(category_id);
         console.log(product_name);
         console.log(product_desc);
         console.log(product_price);
         console.log(image);
         console.log(unit_weight);
-        console.log(unit_name);
+        console.log(unit_name)
         console.log(stock);
         console.log(is_fresh);
-        console.log(user);
-
-        const [isError, response] = await postData(body, "product", user, false, true)
+        const [isError, response] = await postData(data, "product")
         if (isError) toast.error("Create product failed, please try again");
         else {
             toast.success("Register success, redirecting...")
@@ -89,6 +71,7 @@ export default function FarmerProduct() {
     const upLoadToClient = (event) => {
         if (event.target.files && event.target.files[0]) {
             const i = event.target.files[0];
+
             setImage(i);
         }
     }
@@ -148,9 +131,9 @@ export default function FarmerProduct() {
                             <select value={category_id} onChange={(e) => {
                             setCategoryId(e.target.value)
                             }}>
-                                <option value="1">Fruit</option>
-                                <option value="2">Veggies</option>
-                                {/* <option value="3">3</option> */}
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                         </div>
                         <h1>Media Management</h1>
@@ -257,6 +240,8 @@ export default function FarmerProduct() {
                                     placeholder="Postal Code"
                                 />
                             </div>
+
+
                         </div>
                         <div className={styles.addProducts_productInformationContainer_availability}>
                             <label>Delivery Availablity</label>
@@ -273,7 +258,10 @@ export default function FarmerProduct() {
                                 </Link>
                             </button>
                             <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_submitBtn}>
-                                Save and Publish
+                                Save Changes
+                            </button>
+                            <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_deleteBtn}>
+                                Delete Product
                             </button>
                         </div>
 

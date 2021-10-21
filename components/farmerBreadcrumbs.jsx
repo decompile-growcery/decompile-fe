@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import styles from "../styles/components/farmerBreadcrumbs.module.scss";
+import styles from "../styles/components/FarmerBreadcrumbs.module.scss";
 
 const useStyles = makeStyles((theme) => ({
   root: {

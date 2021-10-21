@@ -1,0 +1,41 @@
+@import "../utils/fonts";
+@import "../utils/colors";
+@import "../utils/buttons";
+
+.editAccount {
+  @include fontPrimary;
+  padding: 0 64px;
+  margin-bottom: 10px;
+
+  &_input {
+      margin-bottom: 20px;
+
+      label {
+          display: inline-block;
+          width: 200px;
+      }
+
+      input {
+        width: 50%;
+        border: 1px solid $light-green;
+        border-radius: 20px;
+        padding: 5px 16px;
+        font-size: 16px;
+      }
+  }
+
+  &_btn {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 60px;
+    margin: 5px 10px;
+    &_update {
+      @include buttonPrimary;
+      margin-left: 0;
+    }
+
+    &_cancel {
+      @include buttonCancel;
+    }
+  }
+}

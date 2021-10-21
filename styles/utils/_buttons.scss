@@ -1,6 +1,15 @@
+@import "./colors";
+
 @mixin buttonPrimary() {
     color: $white;
     background: $darker-green;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+@mixin buttonCancel() {
+    color: $white;
+    background: #86C18C;
     cursor: pointer;
     font-weight: 700;
 }

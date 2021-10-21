@@ -17,7 +17,7 @@ import useForm from "../../lib/hooks/useForm";
 import plus from "../../public/plus.png"
 import Image from "next/image";
 import Link from "next/link";
-import postData from "../../lib/utils/postData";
+import postFormData from "../../lib/utils/postFormData";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -49,39 +49,32 @@ export default function FarmerProduct() {
         body.append("unit_name", unit_name);
         body.append("stock", stock);
         body.append("is_fresh", is_fresh);
+        
+        for (var pair of body.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+        }
 
-        // const data = new URLSearchParams({
-        //     category_id: category_id,
-        //     product_name: product_name,
-        //     product_desc: product_desc,
-        //     product_price: product_price,
-        //     product_image: image,
-        //     unit_weight: unit_weight,
-        //     unit_name: unit_name,
-        //     stock: stock,
-        //     is_fresh: is_fresh
-        // })
+        const data = new URLSearchParams({
+            category_id: category_id,
+            product_name: product_name,
+            product_desc: product_desc,
+            product_price: product_price,
+            product_image: "anjing",
+            unit_weight: unit_weight,
+            unit_name: unit_name,
+            stock: stock,
+            is_fresh: is_fresh
+        })
         // const data = new URLSearchParams ({
         //     category_id: body.get("category_id"),
 
         // })
 
-        console.log(category_id);
-        console.log(product_name);
-        console.log(product_desc);
-        console.log(product_price);
-        console.log(image);
-        console.log(unit_weight);
-        console.log(unit_name);
-        console.log(stock);
-        console.log(is_fresh);
-        console.log(user);
-
-        const [isError, response] = await postData(body, "product", user, false, true)
+        const [isError, response] = await postFormData(body, "product", user)
         if (isError) toast.error("Create product failed, please try again");
         else {
-            toast.success("Register success, redirecting...")
-            router.push("/");
+            toast.success("Successfully created product, redirecting...")
+            router.push("/farm/farmerProducts");
         }
         
     };
@@ -160,21 +153,6 @@ export default function FarmerProduct() {
 								<input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
                                 <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
-									{image}
-                                </label>
-                            </div>
-                            <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label htmlFor="file">
-                                    <Image src={plus} alt="addImg" width="30%" height="30%" />
-									{image}
-                                </label>
-                            </div>
-                            <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
-                                <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label htmlFor="file">
-                                    <Image src={plus} alt="addImg" width="30%" height="30%" />
-									{image}
                                 </label>
                             </div>
                         </div>

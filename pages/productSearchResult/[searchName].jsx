@@ -4,11 +4,7 @@ import Head from "next/dist/shared/lib/head"
 import searchResult from "../../components/searchResult"
 import ProductList from "../../components/productList"
 
-export default function productionSearchResult({searchName}) {
-
-  // const [searchedProducts, setSearchedProducts] = useState([])
-  console.log(searchName);
-
+export default function ProductionSearchResult({searchName}) {
   
   return (
     <div>

@@ -50,15 +50,7 @@ export default function FarmerProduct() {
             stock: stock,
             is_fresh: is_fresh
         })
-        console.log(category_id);
-        console.log(product_name);
-        console.log(product_desc);
-        console.log(product_price);
-        console.log(image);
-        console.log(unit_weight);
-        console.log(unit_name)
-        console.log(stock);
-        console.log(is_fresh);
+
         const [isError, response] = await postData(data, "product")
         if (isError) toast.error("Create product failed, please try again");
         else {
@@ -280,7 +272,6 @@ export async function getServerSideProps() {
 	if (res){
 		data = await res.json();
 	}
-	console.log(data.data);
 	return {
 	  props: {
 		products: data.data || "",

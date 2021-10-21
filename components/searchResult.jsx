@@ -7,7 +7,6 @@ export default async function searchResult(name) {
     if (res) {
         data = await res.json();
     }
-    console.log(data)
     return {
         props: {
             productName: data.data.product_name || "",

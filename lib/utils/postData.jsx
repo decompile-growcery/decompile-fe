@@ -13,7 +13,7 @@ export default async function postData(
     type = "application/json";
   } else {
     if (formData) {
-      type = "application/form-data";
+      type = "multipart/form-data";
     } else {
       type = "application/x-www-form-urlencoded";
     }

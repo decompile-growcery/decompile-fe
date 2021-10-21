@@ -13,7 +13,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 
-export default function farmerProduct() {
+export default function FarmerProduct() {
   const user = useUser();
   // const [filteredList, setFiltered] = useState([]);
 
@@ -34,19 +34,6 @@ export default function farmerProduct() {
         mapProducts();
       });
   }, []);
-  // setFiltered(productList);
-  console.log(productList);
-  console.log(filteredList);
-
-  // const filterProducts = (id) => {
-  //     const newProducts = productList.filter((d) => d.status_id === id);
-  //     setFiltered(newProducts);
-  //     mapProducts();
-  // };
-
-  // const getAllProducts = () => {
-  //     setFiltered(productList);
-  // };
   let products = productList.map((c, i) => (
     <FarmerProductItem
       key={i}
@@ -66,7 +53,6 @@ export default function farmerProduct() {
       image_id={c.image_id}
     />
   ));
-  console.log(products);
 
   const mapProducts = () => {
     products = [];

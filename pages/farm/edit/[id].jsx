@@ -36,17 +36,12 @@ export default function EditProduct({product}) {
 
     const router = useRouter();
     const user = useUser();
-    console.log(product);
     if(typeof window !== "undefined") {
         if(!window.location.hash) {
             window.location = window.location + '#loaded';
             window.location.reload();
         }
     }
-
-    // useEffect(() => {
-    //     router.reload()
-    // }, [])
     
     const CustomButton = withStyles({
         root: {
@@ -99,16 +94,7 @@ export default function EditProduct({product}) {
             is_fresh: is_fresh,
             discount: 50
         })
-        console.log(category_id);
-        console.log(product_name);
-        console.log(product_desc);
-        console.log(product_price);
-        // console.log(image);
-        console.log(unit_weight);
-        console.log(unit_name);
-        console.log(stock);
-        console.log(is_fresh);
-        console.log(user);
+
         const [isError, response] = await putData(data, "product", user)
         if (isError) toast.error("Update product failed, please try again");
         else {

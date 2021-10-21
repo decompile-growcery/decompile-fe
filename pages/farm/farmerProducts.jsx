@@ -13,7 +13,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 
 
-export default function farmerProduct() {
+export default function FarmerProduct() {
 
 
     const user = useUser();

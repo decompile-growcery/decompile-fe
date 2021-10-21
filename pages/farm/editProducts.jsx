@@ -21,7 +21,7 @@ import postData from "../../lib/utils/postData";
 import "react-toastify/dist/ReactToastify.css";
 
 
-export default function farmerProduct() {
+export default function FarmerProduct() {
 
     const router = useRouter();
 
@@ -141,21 +141,21 @@ export default function farmerProduct() {
                             <label>Product Images*</label>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
 								<input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
 									{image}
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
                                 <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
 									{image}
                                 </label>
                             </div>
                             <div className={styles.addProducts_productInformationContainer_uploadImage_imagePreview}>
                                 <input type="file" id="file" accept="image/*" name="myImage" onChange={upLoadToClient}></input>
-                                <label for="file">
+                                <label htmlFor="file">
                                     <Image src={plus} alt="addImg" width="30%" height="30%" />
 									{image}
                                 </label>

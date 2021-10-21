@@ -6,10 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import styles from "../styles/components/farmerSideBar.module.scss";
-import logo from "../public/logo.png";
-import Image from "next/image";
-import Link from "next/link";
+import styles from "../../styles/components/farmerSideBar.module.scss";
 
 const drawerWidth = 200;
 
@@ -58,29 +55,24 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div className={styles.sidebar_item}>
       <div/>
-      <span className={styles.sidebar_logo}>
-              <Image src={logo} alt="logo" />
-            </span>
       <h3 className={styles.sidebar_title}>Products</h3>
       <List className={styles.sidebar_list}>
       <ListItem button key={'my-products'}>
-            {/* <Link classes={{ primary: styles.sidebar_listItem }} primary={'My Products'} /> */}
-            <Link href={`../farm/farmerProducts`}>
-              <p className={styles.sidebar_listItem}>My Products</p>
-            </Link>
-      </ListItem> 
+            <a href="./farm/farmerProducts">
+				<ListItemText classes={{ primary: styles.sidebar_listItem }} primary={'My Products'} />
+			</a>
+      </ListItem>
       <ListItem button key={'add-product'}>
-            <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'Add Product'} />
+            <a href="./farm/addProducts">
+            	<ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'Add Product'} />
+			</a>
       </ListItem>
       </List>
 
       <h3 className={styles.sidebar_title}>Orders</h3>
       <List>
       <ListItem button key={'my-orders'}>
-        <Link href="/farm/orders">
-          <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Orders'} />
-        </Link>
-            
+            <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Orders'} />
       </ListItem>
       </List>
     </div>
@@ -127,3 +119,18 @@ function ResponsiveDrawer(props) {
 }
 
 export default ResponsiveDrawer;
+
+
+// export async function getServerSideProps({params}) {
+//   const id = params.id;
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}farmer/${id}`);
+//   let data = "";
+//   if (res) 
+//     data = await res.json();
+
+//   return {
+//     props: {
+//       product: data.data || "",
+//     }
+//   }
+// }

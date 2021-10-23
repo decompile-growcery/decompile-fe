@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -20,55 +19,12 @@ import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 import useUser from "../lib/hooks/useUser";
-<<<<<<< HEAD
-import searchResult from "./searchResult";
-import { Router, useRouter } from "next/dist/client/router";
-=======
 import { useRouter } from "next/dist/client/router";
 import Cookies from "js-cookie";
->>>>>>> 2c868ade6fd7f4cb639a2bfb101d32113e5e8ddc
 
 export default function Navbar() {
   const router = useRouter();
   const user = useUser();
-<<<<<<< HEAD
-  const router = useRouter()
-
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchWord, setSearchWord] = useState("");
-
-  console.log(filteredData);
-  const handleFilter = (event) => {
-
-    setSearchWord(event.target.value)
-    console.log(searchWord)
-    const productInformation = searchResult(searchWord);
-    //source: https://stackoverflow.com/questions/38884522/why-is-my-asynchronous-function-returning-promise-pending-instead-of-a-val/38884856#38884856
-    productInformation.then(function(result) {
-      console.log(result)
-      if (searchWord === "") {
-        setFilteredData([]);
-      } else {
-        setFilteredData(result.props.productName)
-      }
-    })
-  }
-
-  //source: https://stackoverflow.com/questions/59888514/next-js-how-to-submit-a-form-to-another-page
-  const preventDefault = f => e => {
-    e.preventDefault()
-    f(e)
-  }
-
-  const searchSubmit = preventDefault(() => {
-    router.push({
-      pathname: `/productSearchResult/${searchWord}`
-    })
-  })
-
-  console.log(searchWord);
-
-=======
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -81,7 +37,6 @@ export default function Navbar() {
     Cookies.remove('token');
     router.push("/");
   }
->>>>>>> 2c868ade6fd7f4cb639a2bfb101d32113e5e8ddc
   return (
     <nav>
       <AppBar className={styles.navbar} color="transparent" position="static">
@@ -89,32 +44,16 @@ export default function Navbar() {
           <span className={styles.navbar_logo}>
             <Image src={logo} alt="logo" />
           </span>
-          <form onSubmit={searchSubmit} className={styles.navbar_form}>
+          <div>
             <span className={styles.navbar_searchbar_icon} />
             <input
               className={styles.navbar_searchbar}
               placeholder="Search your favourite vegies here..."
-              onChange={handleFilter}
-              // onKeyPress= {(e) => handleKeyDown(e)}
             />
-            {filteredData.length !=0 &&
-              (<div className={styles.navbar_searchbar_dataResult}>
-                {
-                  (
-                    <Link href={`/productSearchResult/${searchWord}`}>
-                    <a className={styles.navbar_searchbar_dataResult_productItem}>
-                      <p>{filteredData}</p>
-                    </a>
-                    </Link>
-                  )
-                }
-              </div>
-              )
-            }
-          </form>
+          </div>
           <div className={styles.navbar_items}>
             <Link href="/">
-              <a> Home </a>
+              Home
             </Link>
             {user && (
               <>
@@ -132,11 +71,7 @@ export default function Navbar() {
               <AccountCircleOutlined />
             </IconButton>
           </div>
-<<<<<<< HEAD
-          {user &&
-=======
           {user && (
->>>>>>> 2c868ade6fd7f4cb639a2bfb101d32113e5e8ddc
             <Link href="/cart">
               <div className={styles.navbar_shoppingCart}>
                 <IconButton>
@@ -170,8 +105,10 @@ export default function Navbar() {
             <Link href="/account">
               <MenuItem>My Account</MenuItem>
             </Link>
+            <Link href="/farm/orders">
               <MenuItem>My Farm</MenuItem>
-              <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
+            </Link>
+            <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
           </>
         )}
       </Menu>
@@ -188,4 +125,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

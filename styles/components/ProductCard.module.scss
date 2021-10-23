@@ -27,6 +27,12 @@
         justify-content: center
     }
 
+    &_weight {
+        font-weight: lighter;
+        font-size: 12px;
+        color: $grey-text;
+    }
+
     &_btn
     {
         @include buttonPrimary;

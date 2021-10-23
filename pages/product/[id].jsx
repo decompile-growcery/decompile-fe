@@ -51,8 +51,8 @@ export default function Login({product}) {
           <Grid item sm={12} md={7}>
             <div className={styles.product_detail}>
               <h1 className={styles.product_name}>{product.product_name}</h1>
-              <p className={styles.product_weight}>{product.unit_weight} {product.unit_name}</p>
-              <h2 className={styles.product_price}>${product.product_price}</h2>
+              <h2 className={styles.product_price}>${product.product_price}
+              <span className={styles.product_weight}>/{product.unit_weight} {product.unit_name}</span></h2>
               <button className={styles.product_btn} onClick={() => addToCart(product.product_id)}>Add to Cart</button>
               <div className={styles.product_description}>
                 <h3>Product Description</h3>

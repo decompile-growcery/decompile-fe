@@ -15,7 +15,7 @@ export default function Cart() {
   const user = useUser();
   const [orderList, setOrders] = useState([]);
   const [filteredList, setFiltered] = useState([]);
-  const [count, setCount] = useState(0);
+  const [exist, setExist] = useState(0);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_LINK}farm-orders`, {
@@ -27,8 +27,8 @@ export default function Cart() {
       .then((data) => {
         setOrders(data.data);
         setFiltered(orderList);
+        setExist(data.order_exist)
         mapOrders();
-        setCount(0)
       });
   }, []);
 
@@ -36,12 +36,10 @@ export default function Cart() {
     const newOrders = orderList.filter((d) => d.status_id === id);
     setFiltered(newOrders);
     mapOrders();
-    setCount()
   };
 
   const getAllOrders = () => {
     setFiltered(orderList);
-    setCount(1)
   };
 
   var orders = filteredList.map((c, i) => (
@@ -114,7 +112,10 @@ export default function Cart() {
         <div>
           <h1>My Orders</h1>
         </div>
-        <div className={styles.orders_container}>
+        {exist == 0? "You have no order." :  
+        <div>
+          <p>Select a button to filter orders.</p>
+          <div className={styles.orders_container}>
           <Grid container>
             <Grid item xs={8}>
               <div className={styles.orders_statusButtons}>
@@ -151,28 +152,11 @@ export default function Cart() {
             </Grid>
           </Grid>
           <hr className={styles.orders_line} />
-          {count == 0? filteredList.map((c, i) => { 
-            <OrderItem
-            key={i}
-            order_id={c.order_id}
-            image={c.image}
-            product_name={c.product_name}
-            status={c.status}
-            price={c.price}
-            amount={c.amount}
-            note={c.note}
-            is_delivery={c.is_delivery}
-            city={c.city}
-            state={c.state}
-            postal_code={c.postal_code}
-            street_address={c.street_address}
-            weight={c.weight}
-            first_name={c.first_name}
-            last_name={c.last_name}
-          />
-          }) : orders}
-          {/* {orders} */}
+          {orders}
         </div>
+        </div>
+        }
+
       </main>
     </div>
   );

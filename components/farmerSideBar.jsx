@@ -64,13 +64,14 @@ function ResponsiveDrawer(props) {
       <h3 className={styles.sidebar_title}>Products</h3>
       <List className={styles.sidebar_list}>
       <ListItem button key={'my-products'}>
-            {/* <Link classes={{ primary: styles.sidebar_listItem }} primary={'My Products'} /> */}
-            <Link href={`../farm/farmerProducts`}>
-              <p className={styles.sidebar_listItem}>My Products</p>
-            </Link>
+          <Link href="/farm/farmerProducts">
+            <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Products'} />
+          </Link>
       </ListItem> 
       <ListItem button key={'add-product'}>
-            <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'Add Product'} />
+        <Link href="/farm/addProducts">
+          <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'Add Product'} />
+        </Link>   
       </ListItem>
       </List>
 
@@ -80,7 +81,6 @@ function ResponsiveDrawer(props) {
         <Link href="/farm/orders">
           <ListItemText classes={{ primary: styles.sidebar_listItem }}  primary={'My Orders'} />
         </Link>
-            
       </ListItem>
       </List>
     </div>

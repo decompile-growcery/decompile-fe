@@ -19,20 +19,6 @@ export default function FarmerProductItem({
   discount,
   image_id,
   image
-  // categoryId,
-  // productName,
-  // productDesc,
-  // productPrice,
-  // unitWeight,
-  // unitName,
-  // stock,
-  // isFresh,
-  // farmAddress,
-  // imageId,
-  // productImage,
-  // productId,
-  // farmName,
-  // productDiscount
 }) {
 
   const user = useUser();
@@ -59,45 +45,16 @@ export default function FarmerProductItem({
       </div>
 
       <div className={styles.farmerProductItem_stock}>
-        {/* <p className={styles.farmerProductItem_descTitle}>Stock:</p> */}
         <p className={styles.farmerProductItem_desc}>{stock}</p>
       </div>
 
-      {/* <div>
-        <p className={styles.farmerProductItem_descTitle}>Weight:</p>
-        <p className={styles.farmerProductItem_desc}>{weight}kg</p>
-        </div>  */}
-
       <div className={styles.farmerProductItem_price}>
-        {/* <p className={styles.farmerProductItem_descTitle}>$</p> */}
         <p className={styles.farmerProductItem_desc}>${product_price}</p>
         <p className={styles.farmerProductItem_desc}>/{unit_weight}{unit_name}</p>
       </div>
 
-      {/* <div>
-        <p className={styles.farmerProductItem_descTitle}>Price:</p>
-        <p className={styles.farmerProductItem_desc}>${price}</p>
-        </div>  */}
-
       <div className={styles.farmerProductItem_shipping}>
         <p className={styles.farmerProductItem_descTitle}>Self-pickup only</p>
-        {/* <p className={styles.farmerProductItem_desc}>{is_delivery? "Delivery":"Pick Up"}</p> */}
-      </div>
-
-      {/* <div>
-        <p className={styles.farmerProductItem_descTitle}>Recipient:</p>
-        <p className={styles.farmerProductItem_desc}>{first_name} {last_name}</p>
-        </div> 
-        
-        <div>
-        <p className={styles.farmerProductItem_descTitle}>Delivery Address:</p>
-        <p className={styles.farmerProductItem_desc}>{is_delivery? `${street_address}, ${state}, ${city} ${postal_code}` :"-"}</p>
-        </div>  */}
-
-      <div>
-        <Link href="/">
-          Edit
-        </Link>
       </div>
     </div>
   );

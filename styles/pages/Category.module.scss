@@ -1,0 +1,24 @@
+@import '../utils/fonts';
+@import '../utils/colors';
+
+.category {
+    @include fontPrimary;
+    padding: 0 2rem;
+    padding-top: 5vh;
+
+    &_cont {
+        padding: 0 10vw;
+    }
+
+    &_containerDiv {
+        display: flex;
+    }
+
+    &_arrow {
+        padding: 0 2vw;
+    }
+
+    &_text {
+        padding: 0 2vw;
+    }
+}

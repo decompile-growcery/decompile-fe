@@ -6,7 +6,7 @@ export default async function putData(data, url, token = false, json = false) {
       body: data,
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
+        'Content-Type': json ? 'application/json' : 'application/x-www-form-urlencoded'
       }
     })
       .then((res) => {

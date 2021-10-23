@@ -3,7 +3,7 @@ import styles from "../styles/components/FarmerProductItem.module.scss";
 import useUser from "../lib/hooks/useUser";
 import Link from "next/link";
 
-export default function farmerProductItem({
+export default function FarmerProductItem({
   key,
   product_id,
   farm_id,

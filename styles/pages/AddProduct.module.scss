@@ -244,6 +244,21 @@
                 min-width: 12vw;
                 margin-right: 5px;
             }
+			
+            &_deleteBtn {
+                background-color: #FF5524;
+                border-radius: 5px;
+                color: white;
+                font-family: "Poppins";
+                border: none;
+                padding-right: 2vw;
+                padding-left: 2vw;
+                padding-bottom: 0.3vh;
+                padding-top: 0.3vh;
+                font-size: 1.1em;
+                min-width: 12vw;
+                margin-right: 5px;
+            }
         }
     }
     &_statusButtons {

@@ -1,5 +1,6 @@
 import Navbar from "../../components/navbar";
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/Account.module.scss";
@@ -14,7 +15,7 @@ export default function Account() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setUser(data.data));
+      .then((data) => setUser(data.data[0]));
   }, []);
   return (
     <div>
@@ -42,7 +43,15 @@ export default function Account() {
           <p className={styles.account_field_key}>Last Name</p>
           <p className={styles.account_field_value}>{user.last_name}</p>
         </div>
-        <button className={styles.account_button}>Edit Profile</button>
+        <div className={styles.account_field}>
+          <p className={styles.account_field_key}>Address</p>
+          <p className={styles.account_field_value}>
+            {user.street_address}, {user.postal_code}, {user.city}, {user.state}
+          </p>
+        </div>
+        <Link href="/account/edit">
+          <a className={styles.account_button}>Edit Profile</a>
+        </Link>
       </main>
     </div>
   );

@@ -24,7 +24,6 @@ import "react-toastify/dist/ReactToastify.css";
 export default function FarmerProduct() {
 
     const router = useRouter();
-    const user = useUser();
 
     const CustomButton = withStyles({
         root: {
@@ -57,11 +56,10 @@ export default function FarmerProduct() {
         console.log(product_price);
         console.log(image);
         console.log(unit_weight);
-        console.log(unit_name);
+        console.log(unit_name)
         console.log(stock);
         console.log(is_fresh);
-        console.log(user);
-        const [isError, response] = await postData(data, "product", user)
+        const [isError, response] = await postData(data, "product")
         if (isError) toast.error("Create product failed, please try again");
         else {
             toast.success("Register success, redirecting...")
@@ -260,7 +258,10 @@ export default function FarmerProduct() {
                                 </Link>
                             </button>
                             <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_submitBtn}>
-                                Save and Publish
+                                Save Changes
+                            </button>
+                            <button type="submit" form="createProductForm" className={styles.addProducts_productInformationContainer_endBtn_deleteBtn}>
+                                Delete Product
                             </button>
                         </div>
 

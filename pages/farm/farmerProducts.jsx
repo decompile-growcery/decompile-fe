@@ -13,7 +13,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 
 
-export default function farmerProduct() {
+export default function FarmerProduct() {
 
 
     const user = useUser();
@@ -113,9 +113,11 @@ export default function farmerProduct() {
                 <FarmerBreadcrumbs />
                 <div className={styles.products_addProductContainer}>
                     <h1>25 Products</h1>
-                    <button className={styles.products_addProductContainer_addProductButton}>
-                        + Add New Product
-                    </button>
+                    <a href="./addProducts">
+						<button className={styles.products_addProductContainer_addProductButton}>
+							+ Add New Product
+						</button>
+					</a>
                 </div>
                 <div className={styles.products_container}>
                     <Grid container>

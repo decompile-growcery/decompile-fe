@@ -1,15 +1,22 @@
 @import '../utils/fonts';
 @import '../utils/colors';
+@import "../utils/breakpoints";
 
 .home {
     @include fontPrimary;
     padding: 0 2rem;
     padding-top: 5vh;
     background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09), 	#FFFFFF, 	#FFFFFF, 	#FFFFFF 100%);
+    @media screen and (max-width: $mobile) {
+        background: #FFFFFF;
+      }
 
     &_cont {
         justify-content: center;
         padding: 0 10vw;
+        @media screen and (max-width: $mobile) {
+            padding: 0 1vw;
+          }
     }
 
     &_containerDiv {
@@ -18,10 +25,23 @@
         justify-content: center;
     }
 
+    &_itemContainer {
+        margin: 0 5vw;
+    }
+
+    &_text {
+        @media screen and (max-width: $mobile) {
+            font-size: 2vw;
+        }
+    }
+
     &_logoItem {
         align-items: center;
         justify-content: center;
         text-align: center;
         cursor: pointer;
+        @media screen and (max-width: $mobile) {
+            margin: 0 2vw;
+          }
     }
 }

@@ -31,39 +31,51 @@ export default function Home({products}) {
             <Grid container className={styles.home_cont}>
               <Grid item className={styles.home_logoItem} md={2}>
                 <Link href="/product/dairy">
-                  <Image src={Dairy} alt="dairy" />
+                  <div>
+                    <Image src={Dairy} alt="dairy" />
+                    <p>Dairy</p>
+                  </div>
                 </Link>
-                <p>Dairy</p>
               </Grid>
               <Grid item className={styles.home_logoItem} xs={2}>
                 <Link href="/product/meat">
-                  <Image src={Meat} alt="meat" />
+                  <div>
+                    <Image src={Meat} alt="meat" />
+                    <p>Meat</p>
+                  </div>
                 </Link>
-                  <p>Meat</p>
               </Grid>
               <Grid item className={styles.home_logoItem} xs={2}>
                 <Link href="/product/fruits">
-                  <Image src={Fruits} alt="fruits" />
+                  <div>
+                    <Image src={Fruits} alt="fruits" />
+                    <p>Fruits</p>
+                  </div>
                 </Link>
-                <p>Fruits</p>
               </Grid>
               <Grid item className={styles.home_logoItem} xs={2}>
                 <Link href="/product/vegetables">
-                  <Image src={Vegetables} alt="vegetables" />
+                  <div>
+                    <Image src={Vegetables} alt="vegetables" />
+                    <p>Vegetables</p>
+                  </div>
                 </Link>
-                <p>Vegetables</p>
               </Grid>
               <Grid item className={styles.home_logoItem} xs={2}>
                 <Link href="/product/grains">
-                  <Image src={Grains} alt="grains" />
+                  <div>
+                    <Image src={Grains} alt="grains" />
+                    <p>Grains</p>
+                  </div>
                 </Link>
-                <p>Grains</p>
               </Grid>
               <Grid item className={styles.home_logoItem} xs={2}>
                 <Link href="/product/others">
-                  <Image src={Others} alt="others" />
+                  <div>
+                    <Image src={Others} alt="others" />
+                    <p>Others</p>
+                  </div>
                 </Link>
-                <p>Others</p>
               </Grid>
             </Grid>
             </div>

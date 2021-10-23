@@ -5,7 +5,7 @@
     @include fontPrimary;
     padding: 0 2rem;
     padding-top: 5vh;
-    background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09) 100%);
+    background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09), 	#FFFFFF, 	#FFFFFF, 	#FFFFFF 100%);
 
     &_cont {
         justify-content: center;
@@ -23,5 +23,6 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+        cursor: pointer;
     }
 }

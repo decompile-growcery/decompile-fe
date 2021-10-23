@@ -51,16 +51,6 @@ export default function FarmerProduct() {
             stock: stock,
             is_fresh: is_fresh
         })
-        console.log(category_id);
-        console.log(product_name);
-        console.log(product_desc);
-        console.log(product_price);
-        console.log(image);
-        console.log(unit_weight);
-        console.log(unit_name);
-        console.log(stock);
-        console.log(is_fresh);
-        console.log(user);
         const [isError, response] = await postData(data, "product", user)
         if (isError) toast.error("Create product failed, please try again");
         else {
@@ -84,12 +74,10 @@ export default function FarmerProduct() {
 
     const [product_name, handleChangeProductName] = useForm("");
     const [product_desc, handleChangeProductDesc] = useForm("");
-    // const [category_id, handleChangeCategory] = useForm("");
     const [product_price, handleChangePrice] = useForm("");
     const [unit_weight, handleChangeWeight] = useForm("");
     const [unit_name, handleChangeUnitName] = useForm("");
     const [stock, handleChangeStock] = useForm("");
-    // const [is_fresh, handleChangeFresh] = useForm("");
     const [country, handleChangeCountry] = useForm("");
     const [city, handleChangeCity] = useForm("");
     const [postalCode, handleChangePostCode] = useForm("");
@@ -106,7 +94,9 @@ export default function FarmerProduct() {
             <ResponsiveDrawer />
             <main className={styles.addProducts}>
                 <ToastContainer />
-                <FarmerBreadcrumbs />
+                <FarmerBreadcrumbs
+                string2="Products"
+                string3="Add Products" />
                 <div className={styles.addProducts_productInformationContainer}>
                     <form id="createProductForm" onSubmit={handleCreate}>
 
@@ -133,9 +123,12 @@ export default function FarmerProduct() {
                             <select value={category_id} onChange={(e) => {
                             setCategoryId(e.target.value)
                             }}>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="1">Fruit</option>
+                                <option value="2">Vegetables</option>
+                                <option value="3">Dairy</option>
+                                <option value="1">Meat</option>
+                                <option value="2">Grains</option>
+                                <option value="3">Others</option>
                             </select>
                         </div>
                         <h1>Media Management</h1>
@@ -242,8 +235,6 @@ export default function FarmerProduct() {
                                     placeholder="Postal Code"
                                 />
                             </div>
-
-
                         </div>
                         <div className={styles.addProducts_productInformationContainer_availability}>
                             <label>Delivery Availablity</label>

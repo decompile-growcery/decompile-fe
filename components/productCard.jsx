@@ -21,8 +21,8 @@ export default function productCard ({id, name, unitWeight, unitName, image, pri
                     />
                 </div>
                 <h4 className={styles.productCard_name}>{name}</h4>
-                <p className={styles.productCard_weight}>{unitWeight} {unitName}</p>
-                <h4 className={styles.productCard_price}>${price}</h4>
+                <h4 className={styles.productCard_price}>${price}
+                <span className={styles.productCard_weight}>/{unitWeight} {unitName}</span></h4>
                 <Link href={`/product/${id}`}>
                     <button className={styles.productCard_btn}>View Product</button>
                 </Link>

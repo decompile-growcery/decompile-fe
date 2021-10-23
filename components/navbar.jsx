@@ -53,7 +53,7 @@ export default function Navbar() {
           </div>
           <div className={styles.navbar_items}>
             <Link href="/">
-              <a> Home </a>
+              Home
             </Link>
             {user && (
               <>
@@ -106,7 +106,7 @@ export default function Navbar() {
               <MenuItem>My Account</MenuItem>
             </Link>
             <Link href="/farm/orders">
-            <MenuItem>My Farm</MenuItem>
+              <MenuItem>My Farm</MenuItem>
             </Link>
             <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
           </>

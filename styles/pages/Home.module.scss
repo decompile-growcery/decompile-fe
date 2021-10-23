@@ -4,5 +4,23 @@
 .home {
     @include fontPrimary;
     padding: 0 2rem;
-    margin-top: 24px;
+    padding-top: 5vh;
+    background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09) 100%);
+
+    &_cont {
+        justify-content: center;
+        padding: 0 10vw;
+    }
+
+    &_containerDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &_logoItem {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 }

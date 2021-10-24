@@ -86,46 +86,6 @@ export default function Home({ products }) {
               </Link>
             </Grid>
           </Grid>
-          <Grid item className={styles.home_logoItem} xs={2}>
-            <Link href="/product/meat">
-              <div>
-                <Image src={Meat} alt="meat" />
-                <p>Meat</p>
-              </div>
-            </Link>
-          </Grid>
-          <Grid item className={styles.home_logoItem} xs={2}>
-            <Link href="/product/fruits">
-              <div>
-                <Image src={Fruits} alt="fruits" />
-                <p>Fruits</p>
-              </div>
-            </Link>
-          </Grid>
-          <Grid item className={styles.home_logoItem} xs={2}>
-            <Link href="/product/vegetables">
-              <div>
-                <Image src={Vegetables} alt="vegetables" />
-                <p>Vegetables</p>
-              </div>
-            </Link>
-          </Grid>
-          <Grid item className={styles.home_logoItem} xs={2}>
-            <Link href="/product/grains">
-              <div>
-                <Image src={Grains} alt="grains" />
-                <p>Grains</p>
-              </div>
-            </Link>
-          </Grid>
-          <Grid item className={styles.home_logoItem} xs={2}>
-            <Link href="/product/others">
-              <div>
-                <Image src={Others} alt="others" />
-                <p>Others</p>
-              </div>
-            </Link>
-          </Grid>
         </div>
         <HomePageSection icon={<Award />} title="Products" />
         <ProductList products={products} />

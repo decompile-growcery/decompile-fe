@@ -32,54 +32,99 @@ export default function Home({ products }) {
         <HomePageSection icon={<Disc />} title="Category" />
         <div className={styles.home_containerDiv}>
           <Grid container className={styles.home_cont}>
-            <Grid item className={styles.home_logoItem} md={2}>
+            <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/dairy">
                 <div>
-                  <Image src={Dairy} alt="dairy" />
-                  <p>Dairy</p>
+                  <Image src={Dairy} alt="dairy" width={50} height={50} />
+                  <p className={styles.home_text}>Dairy</p>
                 </div>
               </Link>
             </Grid>
             <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/meat">
                 <div>
-                  <Image src={Meat} alt="meat" />
-                  <p>Meat</p>
+                  <Image src={Meat} alt="meat" width={50} height={50} />
+                  <p className={styles.home_text}>Meat</p>
                 </div>
               </Link>
             </Grid>
             <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/fruits">
                 <div>
-                  <Image src={Fruits} alt="fruits" />
-                  <p>Fruits</p>
+                  <Image src={Fruits} alt="fruits" width={50} height={50} />
+                  <p className={styles.home_text}>Fruits</p>
                 </div>
               </Link>
             </Grid>
             <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/vegetables">
                 <div>
-                  <Image src={Vegetables} alt="vegetables" />
-                  <p>Vegetables</p>
+                  <Image
+                    src={Vegetables}
+                    alt="vegetables"
+                    width={50}
+                    height={50}
+                  />
+                  <p className={styles.home_text}>Vegetables</p>
                 </div>
               </Link>
             </Grid>
             <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/grains">
                 <div>
-                  <Image src={Grains} alt="grains" />
-                  <p>Grains</p>
+                  <Image src={Grains} alt="grains" width={50} height={50} />
+                  <p className={styles.home_text}>Grains</p>
                 </div>
               </Link>
             </Grid>
             <Grid item className={styles.home_logoItem} xs={2}>
               <Link href="/product/others">
                 <div>
-                  <Image src={Others} alt="others" />
-                  <p>Others</p>
+                  <Image src={Others} alt="others" width={50} height={50} />
+                  <p className={styles.home_text}>Others</p>
                 </div>
               </Link>
             </Grid>
+          </Grid>
+          <Grid item className={styles.home_logoItem} xs={2}>
+            <Link href="/product/meat">
+              <div>
+                <Image src={Meat} alt="meat" />
+                <p>Meat</p>
+              </div>
+            </Link>
+          </Grid>
+          <Grid item className={styles.home_logoItem} xs={2}>
+            <Link href="/product/fruits">
+              <div>
+                <Image src={Fruits} alt="fruits" />
+                <p>Fruits</p>
+              </div>
+            </Link>
+          </Grid>
+          <Grid item className={styles.home_logoItem} xs={2}>
+            <Link href="/product/vegetables">
+              <div>
+                <Image src={Vegetables} alt="vegetables" />
+                <p>Vegetables</p>
+              </div>
+            </Link>
+          </Grid>
+          <Grid item className={styles.home_logoItem} xs={2}>
+            <Link href="/product/grains">
+              <div>
+                <Image src={Grains} alt="grains" />
+                <p>Grains</p>
+              </div>
+            </Link>
+          </Grid>
+          <Grid item className={styles.home_logoItem} xs={2}>
+            <Link href="/product/others">
+              <div>
+                <Image src={Others} alt="others" />
+                <p>Others</p>
+              </div>
+            </Link>
           </Grid>
         </div>
         <HomePageSection icon={<Award />} title="Products" />

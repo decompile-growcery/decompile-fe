@@ -4,6 +4,7 @@
 
 .navbar {
   @include fontPrimary;
+  margin-top: 5px;
   border: none;
   box-shadow: none !important;
   padding: 0 20px;

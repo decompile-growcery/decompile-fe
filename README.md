@@ -14,7 +14,7 @@ Staging URL: https://growcery-decompile.vercel.app/
 2. Install the packages `npm i` or `yarn install`
 3. Run the project `npm run dev` or `yarn dev`
 ## Development
-You don't have to follow these steps (except number 2 & 4), but you should consider doing so to preserve your other team member's sanity.
+Here are some guides for development:
 
 1. When coloring an element in scss, try looking if the color is already available within the styles/utils/_colors.scss file. If it is, then use the variable defined there.
 2. Before pushing to master, please build the project first using `npm run build` or `yarn build`. This is to make sure that there are no errors and that the project can be deployed successfully.

@@ -1,5 +1,8 @@
+
 # Description
 This is the frontend repository for the growcery app, made by team decompile.
+
+Staging URL: https://growcery-decompile.vercel.app/
 ### Stack:
  - Next.js
  - SCSS

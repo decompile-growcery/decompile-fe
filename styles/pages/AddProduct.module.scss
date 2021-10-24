@@ -9,7 +9,6 @@
 
     &_productInformationContainer {
         border-radius: 30px;
-        // padding: 100%;
         overflow-y: scroll hidden;
         padding-top: 0.5vh;
         padding-left: 2vw;
@@ -57,13 +56,10 @@
                 -webkit-border-radius: 15px;
                 padding: 15px;
                 border: none;
-                // align-items: center;
-                // padding: 5px;
             }
             ::-webkit-input-placeholder {
                 text-align: right;
                 margin-right: 3px;
-                // border-radius: 30px;
             }
             margin-bottom: 10px;
         }
@@ -114,7 +110,6 @@
         &_salesInformation {
             display: flex;
             flex: row;
-            // flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2vh;
@@ -134,7 +129,6 @@
             display: flex;
             flex: row;
             align-items: center;
-            // justify-content: space-between;
             margin-bottom: 2vh;
 
             input {
@@ -168,7 +162,6 @@
         &_shippingInformation {
             display: flex;
             flex: row;
-            // flex-wrap: wrap;
             align-items: flex-start;
             justify-content: space-between;
 
@@ -244,9 +237,9 @@
                 min-width: 12vw;
                 margin-right: 5px;
             }
-			
+
             &_deleteBtn {
-                background-color: #FF5524;
+                background-color: rgba(255, 85, 36, 1);
                 border-radius: 5px;
                 color: white;
                 font-family: "Poppins";

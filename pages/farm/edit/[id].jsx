@@ -1,26 +1,37 @@
+import { Grid } from "@material-ui/core";
+import Image from "next/image";
+import Navbar from "../../../components/navbar";
+import postData from "../../../lib/utils/postData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import FarmerProductItem from "../../components/farmerProductItem";
-import useUser from "../../lib/hooks/useUser";
-import styles from "../../styles/pages/AddProduct.module.scss";
-import FarmerNavbar from "../../components/farmNavbar";
-import FarmerBreadcrumbs from "../../components/farmerBreadcrumbs";
-import ResponsiveDrawer from "../../components/farmerSideBar";
-import Grid from "@material-ui/core/Grid";
+import FarmerProductItem from "../../../components/farmerProductItem";
+import useUser from "../../../lib/hooks/useUser";
+import styles from "../../../styles/pages/AddProduct.module.scss";
+import FarmerNavbar from "../../../components/farmNavbar";
+import FarmerBreadcrumbs from "../../../components/farmerBreadcrumbs";
+import ResponsiveDrawer from "../../../components/farmerSideBar";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
-import { useRouter } from "next/dist/client/router";
-import { ToastContainer, toast } from "react-toastify";
-import useForm from "../../lib/hooks/useForm";
-import plus from "../../public/plus.png";
-import Image from "next/image";
+import { Router, useRouter } from "next/dist/client/router";
+import useForm from "../../../lib/hooks/useForm";
+import plus from "../../../public/plus.png";
 import Link from "next/link";
-import postData from "../../lib/utils/postData";
 import "react-toastify/dist/ReactToastify.css";
+import putData from "../../../lib/utils/putData";
+import useForm2 from "../../../lib/hooks/useForm2";
 
-export default function FarmerProduct() {
+export default function EditProduct({ product }) {
   const router = useRouter();
+  const user = useUser();
+  if (typeof window !== "undefined") {
+    if (!window.location.hash) {
+      window.location = window.location + "#loaded";
+      window.location.reload();
+    }
+  }
 
   const CustomButton = withStyles({
     root: {
@@ -31,12 +42,11 @@ export default function FarmerProduct() {
     },
   })((props) => <Button {...props} />);
 
-  const handleCreate = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const body = new FormData();
-    body.append("file", image);
     const data = new URLSearchParams({
+      product_id: product.product_id,
       category_id: category_id,
       product_name: product_name,
       product_desc: product_desc,
@@ -46,12 +56,13 @@ export default function FarmerProduct() {
       unit_name: unit_name,
       stock: stock,
       is_fresh: is_fresh,
+      discount: 50,
     });
 
-    const [isError, response] = await postData(data, "product");
-    if (isError) toast.error("Create product failed, please try again");
+    const [isError, response] = await putData(data, "product", user);
+    if (isError) toast.error("Update product failed, please try again");
     else {
-      toast.success("Register success, redirecting...");
+      toast.success("Update success, redirecting...");
       router.push("/");
     }
   };
@@ -63,7 +74,17 @@ export default function FarmerProduct() {
       setImage(i);
     }
   };
-  const [image, setImage] = useState(null);
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const data = new URLSearchParams({
+      product_id: product.product_id,
+    });
+    deleteData(data, "cart/delete", user);
+    const newCart = cart.filter((c) => c.product_id !== id);
+    setCart(newCart);
+  };
 
   const [category_id, setCategoryId] = useState("1");
   const [is_fresh, setIsFresh] = useState("true");
@@ -92,7 +113,7 @@ export default function FarmerProduct() {
         <ToastContainer />
         <FarmerBreadcrumbs />
         <div className={styles.addProducts_productInformationContainer}>
-          <form id="createProductForm" onSubmit={handleCreate}>
+          <form id="createProductForm">
             <h1>Basic Information</h1>
             <div
               className={
@@ -103,7 +124,7 @@ export default function FarmerProduct() {
               <input
                 value={product_name}
                 onChange={handleChangeProductName}
-                placeholder="0/100  "
+                placeholder={product.product_name}
               />
             </div>
             <div
@@ -115,7 +136,7 @@ export default function FarmerProduct() {
               <textarea
                 value={product_desc}
                 onChange={handleChangeProductDesc}
-                placeholder="0/3000 "
+                placeholder={product.product_desc}
                 rows="12"
               />
             </div>
@@ -131,9 +152,9 @@ export default function FarmerProduct() {
                   setCategoryId(e.target.value);
                 }}
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value="1">Fruit</option>
+                <option value="2">Veggies</option>
+                {/* <option value="3">3</option> */}
               </select>
             </div>
             <h1>Media Management</h1>
@@ -157,7 +178,6 @@ export default function FarmerProduct() {
                 ></input>
                 <label htmlFor="file">
                   <Image src={plus} alt="addImg" width="30%" height="30%" />
-                  {image}
                 </label>
               </div>
               <div
@@ -174,7 +194,6 @@ export default function FarmerProduct() {
                 ></input>
                 <label htmlFor="file">
                   <Image src={plus} alt="addImg" width="30%" height="30%" />
-                  {image}
                 </label>
               </div>
               <div
@@ -191,7 +210,6 @@ export default function FarmerProduct() {
                 ></input>
                 <label htmlFor="file">
                   <Image src={plus} alt="addImg" width="30%" height="30%" />
-                  {image}
                 </label>
               </div>
             </div>
@@ -207,19 +225,19 @@ export default function FarmerProduct() {
               <input
                 value={product_price}
                 onChange={handleChangePrice}
-                placeholder="$"
+                placeholder={product.product_price}
               />
               <label>Unit Weight*</label>
               <input
                 value={unit_weight}
                 onChange={handleChangeWeight}
-                placeholder=""
+                placeholder={product.unit_weight}
               />
               <label>Unit Name*</label>
               <input
                 value={unit_name}
                 onChange={handleChangeUnitName}
-                placeholder=""
+                placeholder={product.unit_name}
               />
             </div>
 
@@ -227,7 +245,11 @@ export default function FarmerProduct() {
               className={styles.addProducts_productInformationContainer_stock}
             >
               <label>Stock*</label>
-              <input value={stock} onChange={handleChangeStock} />
+              <input
+                value={stock}
+                onChange={handleChangeStock}
+                placeholder={product.stock}
+              />
             </div>
 
             <div
@@ -323,17 +345,17 @@ export default function FarmerProduct() {
                 className={
                   styles.addProducts_productInformationContainer_endBtn_submitBtn
                 }
+                onClick={handleUpdate}
               >
-                Save Changes
+                Save changes
               </button>
               <button
-                type="submit"
-                form="createProductForm"
                 className={
                   styles.addProducts_productInformationContainer_endBtn_deleteBtn
                 }
+                onClick={handleDelete}
               >
-                Delete Product
+                Delete
               </button>
             </div>
           </form>
@@ -343,15 +365,15 @@ export default function FarmerProduct() {
   );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}category`);
+export async function getServerSideProps({ params }) {
+  const id = params.id;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}product/${id}`);
   let data = "";
-  if (res) {
-    data = await res.json();
-  }
+  if (res) data = await res.json();
+
   return {
     props: {
-      products: data.data || "",
+      product: data.data || "",
     },
   };
 }

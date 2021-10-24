@@ -1,7 +1,7 @@
-import { Grid } from '@material-ui/core'
-import Image from 'next/image';
-import banner from '../public/banner.png'
-import styles from '../styles/components/Banner.module.scss'
+import { Grid } from "@material-ui/core";
+import Image from "next/image";
+import banner from "../public/banner.png";
+import styles from "../styles/components/Banner.module.scss";
 
 export default function Banner() {
   return (

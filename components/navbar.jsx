@@ -13,12 +13,13 @@ import {
   HomeOutlined,
   HistoryOutlined,
 } from "@material-ui/icons";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 import useUser from "../lib/hooks/useUser";
+import searchResult from "./searchResult";
+import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Cookies from "js-cookie";
 
@@ -34,27 +35,46 @@ export default function Navbar() {
     setAnchorEl(null);
   };
   const handleLogout = () => {
-    Cookies.remove('token');
+    Cookies.remove("token");
     router.push("/");
-  }
+  };
+
+  const [searchWord, setSearchWord] = useState("");
+
+  const handleFilter = (event) => {
+    setSearchWord(event.target.value);
+  };
+
+  const preventDefault = (f) => (e) => {
+    e.preventDefault();
+    f(e);
+  };
+
+  const searchSubmit = preventDefault(() => {
+    router.push({
+      pathname: `/search/${searchWord}`,
+    });
+  });
+
   return (
     <nav>
       <AppBar className={styles.navbar} color="transparent" position="static">
         <Toolbar>
-          <span className={styles.navbar_logo}>
-            <Image src={logo} alt="logo" />
-          </span>
-          <div>
+          <Link href="/">
+            <span className={styles.navbar_logo}>
+              <Image src={logo} alt="logo" />
+            </span>
+          </Link>
+          <form onSubmit={searchSubmit}>
             <span className={styles.navbar_searchbar_icon} />
             <input
               className={styles.navbar_searchbar}
               placeholder="Search your favourite vegies here..."
+              onChange={handleFilter}
             />
-          </div>
+          </form>
           <div className={styles.navbar_items}>
-            <Link href="/">
-              Home
-            </Link>
+            <Link href="/">Home</Link>
             {user && (
               <>
                 <Link href="/history">
@@ -105,10 +125,12 @@ export default function Navbar() {
             <Link href="/account">
               <MenuItem>My Account</MenuItem>
             </Link>
-            <Link href="/farm/orders">
+            <Link href="/farm/farmerProducts">
               <MenuItem>My Farm</MenuItem>
             </Link>
-            <MenuItem onClick={handleLogout} className={styles.navbar_logout}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout} className={styles.navbar_logout}>
+              Logout
+            </MenuItem>
           </>
         )}
       </Menu>

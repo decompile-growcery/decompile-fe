@@ -40,7 +40,7 @@ export default function Account() {
 
         setStreetName(temp.street_address);
         setCityName(temp.city);
-        
+
         setStateName(temp.state);
         setPostalCode(temp.postal_code);
       });

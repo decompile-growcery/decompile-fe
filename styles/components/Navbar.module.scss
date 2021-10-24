@@ -4,7 +4,6 @@
 
 .navbar {
   @include fontPrimary;
-  // margin-top: 5px;
   border: none;
   box-shadow: none !important;
   padding: 0 20px;
@@ -26,6 +25,7 @@
   }
 
   &_logo {
+    cursor: pointer;
     @media screen and (max-width: $tablet) {
       display: none !important;
     }
@@ -71,7 +71,6 @@
     }
 
     &_icon {
-      // position: absolute;
       width: 21px;
       height: 21px;
       top: 10px;

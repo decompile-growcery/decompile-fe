@@ -26,10 +26,10 @@ export default function Login() {
     const [isError, response] = await postData(data, "auth/login");
 
     if (isError) {
-      toast.error("Login failed, please try again")
+      toast.error("Login failed, please try again");
     } else {
       toast.success("Login success, redirecting...");
-      Cookies.set('token', response.token);
+      Cookies.set("token", response.token);
       router.push("/");
     }
   };

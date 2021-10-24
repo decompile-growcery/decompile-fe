@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import useUser from "./useUser";
 
 export default async function useCart() {

@@ -48,6 +48,20 @@ export default function FarmerProduct() {
     />
   ));
 
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_API_LINK}my-products`, {
+            headers: {
+                Authorization: `Bearer ${user}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data.data);
+                setFiltered(productList);
+                mapProducts();
+            });
+    }, []);
+
   const mapProducts = () => {
     products = [];
     products = productList.map((c, i) => (

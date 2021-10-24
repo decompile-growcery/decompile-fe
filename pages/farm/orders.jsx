@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 
-export default function Cart() {
+export default function Orders() {
   const user = useUser();
   const [orderList, setOrders] = useState([]);
   const [filteredList, setFiltered] = useState([]);

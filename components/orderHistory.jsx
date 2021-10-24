@@ -19,8 +19,7 @@ export default function OrderItem({
     street_address,
     weight,
     first_name,
-    last_name,
-    kind = "farm"
+    last_name
 }) {
 
   
@@ -44,20 +43,12 @@ export default function OrderItem({
           <p className={styles.orderItem_name}>{product_name}</p>
           <p className={styles.orderItem_desc}>Qty: {amount}</p>
         </div>
-        
-        {kind == "farm" ?  <div>
-          <p className={styles.orderItem_descTitle}>Recipient:</p>
-          <p className={styles.orderItem_desc}>{first_name} {last_name}</p>
-        </div> 
-        : null}
 
-        {kind == "farm" ? 
         <div>
-        <p className={styles.orderItem_descTitle}>Weight:</p>
-        <p className={styles.orderItem_desc}>{weight}kg</p>
+          <p className={styles.orderItem_descTitle}>Weight:</p>
+          <p className={styles.orderItem_desc}>{weight}kg</p>
         </div> 
-        : null}
-      
+
         <div>
           <p className={styles.orderItem_descTitle}>Note:</p>
           <p className={styles.orderItem_desc}>{note ? note:"-"}</p>
@@ -78,29 +69,22 @@ export default function OrderItem({
           <p className={styles.orderItem_desc}>{is_delivery? "Delivery":"Pick Up"}</p>
         </div> 
 
-        {kind == "farm" ? <div>
+        <div>
           <p className={styles.orderItem_descTitle}>Recipient:</p>
           <p className={styles.orderItem_desc}>{first_name} {last_name}</p>
-        </div> : <div></div>}
+        </div> 
         
-        {kind == "farm" ? <div>
-          <div>
-            <p className={styles.orderItem_descTitle}>Delivery Address:</p>
-            <p className={styles.orderItem_desc}>{is_delivery? `${street_address}, ${state}, ${city} ${postal_code}` :"-"}</p>
-          </div> 
-        </div> : <div>
-            <p className={styles.orderItem_descTitle}>Pick-Up Address:</p>
-            <p className={styles.orderItem_desc}>{is_delivery ? `${street_address}` : "-"}</p>
-          </div> }
+        <div>
+          <p className={styles.orderItem_descTitle}>Delivery Address:</p>
+          <p className={styles.orderItem_desc}>{is_delivery? `${street_address}, ${state}, ${city} ${postal_code}` :"-"}</p>
+        </div> 
 
-        
-        
-        {kind == "farm" ? <div>
+        <div>
           <EditOrderDialog
           key={index}
           order_id={order_id}
           />
-        </div> : <div></div>}
+        </div>
     </div>
   );
 }

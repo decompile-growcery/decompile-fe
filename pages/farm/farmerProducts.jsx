@@ -18,7 +18,7 @@ export default function FarmerProduct() {
     const [filteredList, setFiltered] = useState([]);
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_LINK}products?user_id=${user}`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_LINK}my-products`, {
             headers: {
                 Authorization: `Bearer ${user}`,
             },

@@ -3,20 +3,20 @@ import useForm from "../lib/hooks/useForm";
 import styles from "../styles/components/CheckoutItem.module.scss";
 import useUser from "../lib/hooks/useUser";
 
-export default function CartItem({ 
-  id, 
-  price, 
-  qty, 
-  img, 
+export default function CartItem({
+  id,
+  price,
+  qty,
+  img,
   name,
   message,
-  handleChangeMessage
+  handleChangeMessage,
 }) {
   const user = useUser();
 
   const handleChange = (e) => {
-    handleChangeMessage(id, e.target.value)
-  }
+    handleChangeMessage(id, e.target.value);
+  };
 
   return (
     <div className={styles.checkoutItem_root}>

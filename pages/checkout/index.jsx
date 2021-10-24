@@ -84,13 +84,17 @@ export default function Cart() {
       })),
     };
 
-    const [isError, result] = await postData(JSON.stringify(data), "order", user, true);
+    const [isError, result] = await postData(
+      JSON.stringify(data),
+      "order",
+      user,
+      true
+    );
 
     if (!isError) {
-      window.open(result.checkout_url, '_blank');
+      window.open(result.checkout_url, "_blank");
       router.push("/");
     }
-
   };
 
   return (
@@ -148,7 +152,10 @@ export default function Cart() {
               Total Payment:
               <span className={styles.checkout_float_price}>${totalCost}</span>
             </p>
-            <button className={styles.checkout_float_button} onClick={handleCheckout}>
+            <button
+              className={styles.checkout_float_button}
+              onClick={handleCheckout}
+            >
               place order
             </button>
           </div>

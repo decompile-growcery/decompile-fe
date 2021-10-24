@@ -12,15 +12,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/dist/client/router";
 
 export default function Register() {
-  const router = useRouter(); 
+  const router = useRouter();
 
-  const handleRegister = async (e) => { 
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     if (confirmedPassword !== password) {
-      toast.error("Password does not match.")
+      toast.error("Password does not match.");
     } else if (password.length <= 8) {
-      toast.error("Password needs to be more than 8 characters")
+      toast.error("Password needs to be more than 8 characters");
     } else {
       const data = new URLSearchParams({
         username: username,
@@ -28,20 +28,14 @@ export default function Register() {
         email: email,
         first_name: first_name,
         last_name: last_name,
-      })
-      console.log(username);
-      console.log(password);
-      console.log(first_name);
-      console.log(last_name);
+      });
       const [isError, response] = await postData(data, "auth/register");
       if (isError) toast.error("Register failed, please try again");
       else {
         toast.success("Register success, redirecting...");
-        router.push("/"); 
+        router.push("/");
       }
-      
-    };
-
+    }
   };
   const [first_name, handleChangeFirstName] = useForm("");
   const [last_name, handleChangeLastName] = useForm("");

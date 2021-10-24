@@ -22,23 +22,31 @@ export default function OrderItem({
     last_name,
     kind = "farm"
 }) {
-
-  
   return (
     <div className={styles.orderItem}>
-        <div>
-          <p className={styles.orderItem_orderIdBold}>Order id:</p>
-          <p className={styles.orderItem_orderId}>{order_id}</p>
-        </div> 
+      <div>
+        <p className={styles.orderItem_orderIdBold}>Order id:</p>
+        <p className={styles.orderItem_orderId}>{order_id}</p>
+      </div>
 
-        <div className={styles.orderItem_image}>
+      <div className={styles.orderItem_image}>
         <Image
-            className={styles.orderItem_image}
-            src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}  
-            width={100}
-            height={100}
+          className={styles.orderItem_image}
+          src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}
+          width={100}
+          height={100}
         />
-        </div>
+      </div>
+
+      <div>
+        <p className={styles.orderItem_name}>{product_name}</p>
+        <p className={styles.orderItem_desc}>Qty: {amount}</p>
+      </div>
+
+      <div>
+        <p className={styles.orderItem_descTitle}>Weight:</p>
+        <p className={styles.orderItem_desc}>{weight}kg</p>
+      </div>
 
         <div>
           <p className={styles.orderItem_name}>{product_name}</p>
@@ -63,20 +71,19 @@ export default function OrderItem({
           <p className={styles.orderItem_desc}>{note ? note:"-"}</p>
         </div> 
 
-        <div>
-          <p className={styles.orderItem_descTitle}>Status:</p>
-          <p className={styles.orderItem_desc}>{status}</p>
-        </div>
-        
-        <div>
-          <p className={styles.orderItem_descTitle}>Price:</p>
-          <p className={styles.orderItem_desc}>${price}</p>
-        </div> 
+      <div>
+        <p className={styles.orderItem_descTitle}>Collection Method:</p>
+        <p className={styles.orderItem_desc}>
+          {is_delivery ? "Delivery" : "Pick Up"}
+        </p>
+      </div>
 
-        <div>
-          <p className={styles.orderItem_descTitle}>Collection Method:</p>
-          <p className={styles.orderItem_desc}>{is_delivery? "Delivery":"Pick Up"}</p>
-        </div> 
+      <div>
+        <p className={styles.orderItem_descTitle}>Recipient:</p>
+        <p className={styles.orderItem_desc}>
+          {first_name} {last_name}
+        </p>
+      </div>
 
         {kind == "farm" ? <div>
           <p className={styles.orderItem_descTitle}>Recipient:</p>
@@ -92,8 +99,6 @@ export default function OrderItem({
             <p className={styles.orderItem_descTitle}>Pick-Up Address:</p>
             <p className={styles.orderItem_desc}>{is_delivery ? `${street_address}` : "-"}</p>
           </div> }
-
-        
         
         {kind == "farm" ? <div>
           <EditOrderDialog

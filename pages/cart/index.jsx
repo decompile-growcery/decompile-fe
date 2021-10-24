@@ -47,7 +47,7 @@ export default function Cart() {
     deleteData(data, "cart/delete", user);
     const newCart = cart.filter((c) => c.product_id !== id);
     setCart(newCart);
-  }
+  };
 
   const totalCost = cart
     .reduce((total, items) => total + items.quantity * items.product_price, 0)
@@ -61,9 +61,9 @@ export default function Cart() {
 
   const handleCheckout = () => {
     const selectedItems = cart.filter((c) => c.checked === true);
-    Cookies.set('checkout', JSON.stringify(selectedItems));
-    router.push('/checkout');
-  }
+    Cookies.set("checkout", JSON.stringify(selectedItems));
+    router.push("/checkout");
+  };
 
   return (
     <div>
@@ -76,20 +76,20 @@ export default function Cart() {
           <h1>My Shopping Cart</h1>
         </div>
         <div className={styles.cart_container}>
-            {cart.map((c) => (
-              <CartItem
-                key={c.product_id}
-                name={c.product_name}
-                id={c.product_id}
-                price={c.product_price}
-                qty={c.quantity}
-                img={c.image}
-                checked={c.checked}
-                updateQty={updateQty}
-                toggleItem={toggleItem}
-                deleteItem={deleteItem}
-              />
-            ))}
+          {cart.map((c) => (
+            <CartItem
+              key={c.product_id}
+              name={c.product_name}
+              id={c.product_id}
+              price={c.product_price}
+              qty={c.quantity}
+              img={c.image}
+              checked={c.checked}
+              updateQty={updateQty}
+              toggleItem={toggleItem}
+              deleteItem={deleteItem}
+            />
+          ))}
         </div>
         <div className={styles.cart_checkout}>
           <input
@@ -104,7 +104,12 @@ export default function Cart() {
               Total ({cart.length} Products):{" "}
               <span className={styles.cart_checkout_price}>${totalCost}</span>
             </p>
-            <button className={styles.cart_checkout_button} onClick={handleCheckout}>checkout</button>
+            <button
+              className={styles.cart_checkout_button}
+              onClick={handleCheckout}
+            >
+              checkout
+            </button>
           </div>
         </div>
       </main>

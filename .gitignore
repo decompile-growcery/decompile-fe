@@ -37,3 +37,7 @@ yarn-error.log*
 #package-lock
 yarn.lock
 package-lock.json
+
+#PWA
+sw.js
+sw.js.map

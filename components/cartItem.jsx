@@ -15,9 +15,8 @@ export default function CartItem({
   checked,
   updateQty,
   toggleItem,
-  deleteItem
+  deleteItem,
 }) {
-
   const user = useUser();
   const addItem = () => {
     const data = new URLSearchParams({

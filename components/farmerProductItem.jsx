@@ -18,15 +18,12 @@ export default function FarmerProductItem({
   is_fresh,
   discount,
   image_id,
-  image
+  image,
 }) {
-
   const user = useUser();
 
   return (
     <div className={styles.farmerProductItem}>
-
-
       <div className={styles.farmerProductItem_imageAndTitles}>
         <div>
           <Image
@@ -39,9 +36,10 @@ export default function FarmerProductItem({
 
         <div>
           <p className={styles.farmerProductItem_name}>{product_name}</p>
-          <p className={styles.farmerProductItem_desc}>Product ID: {product_id}</p>
+          <p className={styles.farmerProductItem_desc}>
+            Product ID: {product_id}
+          </p>
         </div>
-
       </div>
 
       <div className={styles.farmerProductItem_stock}>
@@ -50,7 +48,10 @@ export default function FarmerProductItem({
 
       <div className={styles.farmerProductItem_price}>
         <p className={styles.farmerProductItem_desc}>${product_price}</p>
-        <p className={styles.farmerProductItem_desc}>/{unit_weight}{unit_name}</p>
+        <p className={styles.farmerProductItem_desc}>
+          /{unit_weight}
+          {unit_name}
+        </p>
       </div>
 
       <div className={styles.farmerProductItem_shipping}>

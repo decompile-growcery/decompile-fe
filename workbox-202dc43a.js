@@ -11,7 +11,6 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
       https://opensource.org/licenses/MIT.
     */
     const logger = (() => {
-      // Don't overwrite this value if it's already set.
       // See https://github.com/GoogleChrome/workbox/pull/2284#issuecomment-560470923
       if (!('__WB_DISABLE_DEV_LOGS' in self)) {
         self.__WB_DISABLE_DEV_LOGS = false;
@@ -41,7 +40,7 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
           }
         }
 
-        const styles = [`background: ${methodToColorMap[method]}`, `border-radius: 0.5em`, `color: white`, `font-weight: bold`, `padding: 2px 0.5em`]; // When in a group, the workbox prefix is not displayed.
+        const styles = [`background: ${methodToColorMap[method]}`, `border-radius: 0.5em`, `color: white`, `font-weight: bold`, `padding: 2px 0.5em`];
 
         const logPrefix = inGroup ? [] : ['%cworkbox', styles.join(';')];
         console[method](...logPrefix, ...args);
@@ -442,7 +441,7 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
       }
     };
 
-    const isInstance = (object, // Need the general type to do the check later.
+    const isInstance = (object,
     // eslint-disable-next-line @typescript-eslint/ban-types
     expectedClass, details) => {
       if (!(object instanceof expectedClass)) {

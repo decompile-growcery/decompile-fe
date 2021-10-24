@@ -1,0 +1,10 @@
+@import "../utils/fonts";
+@import "../utils/buttons";
+@import "../utils/colors";
+@import "../utils/breakpoints";
+
+.search {
+    @include fontPrimary;
+    padding: 0 100px;
+    margin: 20px 0 100px;
+}

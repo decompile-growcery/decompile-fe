@@ -26,6 +26,7 @@
   }
 
   &_logo {
+    cursor: pointer;
     @media screen and (max-width: $tablet) {
       display: none !important;
     }
@@ -71,7 +72,6 @@
     }
 
     &_icon {
-      // position: absolute;
       width: 21px;
       height: 21px;
       top: 10px;

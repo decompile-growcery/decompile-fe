@@ -20,15 +20,6 @@ export default function FarmerProduct() {
   const router = useRouter();
   const user = useUser();
 
-  const CustomButton = withStyles({
-    root: {
-      fontFamily: "'Poppins', sans-serif !important",
-    },
-    label: {
-      textTransform: "capitalize",
-    },
-  })((props) => <Button {...props} />);
-
   const handleCreate = async (e) => {
     e.preventDefault();
 

@@ -20,7 +20,6 @@ export default function History() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data)
         setOrders(data.data);
       });
   }, []);

@@ -43,12 +43,16 @@ export default function Account() {
           <p className={styles.account_field_key}>Last Name</p>
           <p className={styles.account_field_value}>{user.last_name}</p>
         </div>
-        <div className={styles.account_field}>
-          <p className={styles.account_field_key}>Address</p>
-          <p className={styles.account_field_value}>
-            {user.street_address}, {user.postal_code}, {user.city}, {user.state}
-          </p>
-        </div>
+        {user.street_address != null ? 
+          <div className={styles.account_field}>
+            <p className={styles.account_field_key}>Address</p>
+            <p className={styles.account_field_value}>
+              {user.street_address}, {user.postal_code}, {user.city}, {user.state}
+            </p>
+          </div> 
+        : <div className={styles.account_field}>
+            <p>Please add an address by clicking edit profile.</p>
+          </div> }
         <Link href="/account/edit">
           <a className={styles.account_button}>Edit Profile</a>
         </Link>

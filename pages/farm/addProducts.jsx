@@ -35,18 +35,7 @@ export default function FarmerProduct() {
     body.append("stock", stock);
     body.append("is_fresh", is_fresh);
 
-    const data = new URLSearchParams({
-      category_id: category_id,
-      product_name: product_name,
-      product_desc: product_desc,
-      product_price: product_price,
-      product_image: image,
-      unit_weight: unit_weight,
-      unit_name: unit_name,
-      stock: stock,
-      is_fresh: is_fresh,
-    });
-    const [isError, response] = await postFormData(data, "product", user);
+    const [isError, response] = await postFormData(body, "product", user);
     if (isError) toast.error("Create product failed, please try again");
     else {
       toast.success("Successfully created product, redirecting...");
@@ -305,7 +294,6 @@ export async function getServerSideProps() {
   if (res) {
     data = await res.json();
   }
-  console.log(data.data);
   return {
     props: {
       products: data.data || "",

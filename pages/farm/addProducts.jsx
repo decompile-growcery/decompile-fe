@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
-import FarmerProductItem from "../../components/farmerProductItem";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/AddProduct.module.scss";
 import FarmerNavbar from "../../components/farmNavbar";
 import FarmerBreadcrumbs from "../../components/farmerBreadcrumbs";
 import ResponsiveDrawer from "../../components/farmerSideBar";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { withStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/dist/client/router";
 import { ToastContainer, toast } from "react-toastify";
@@ -22,15 +19,6 @@ import "react-toastify/dist/ReactToastify.css";
 export default function FarmerProduct() {
   const router = useRouter();
   const user = useUser();
-
-  const CustomButton = withStyles({
-    root: {
-      fontFamily: "'Poppins', sans-serif !important",
-    },
-    label: {
-      textTransform: "capitalize",
-    },
-  })((props) => <Button {...props} />);
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -47,22 +35,7 @@ export default function FarmerProduct() {
     body.append("stock", stock);
     body.append("is_fresh", is_fresh);
 
-    for (var pair of body.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-
-    const data = new URLSearchParams({
-      category_id: category_id,
-      product_name: product_name,
-      product_desc: product_desc,
-      product_price: product_price,
-      product_image: "anjing",
-      unit_weight: unit_weight,
-      unit_name: unit_name,
-      stock: stock,
-      is_fresh: is_fresh,
-    });
-    const [isError, response] = await postData(data, "product", user);
+    const [isError, response] = await postFormData(body, "product", user);
     if (isError) toast.error("Create product failed, please try again");
     else {
       toast.success("Successfully created product, redirecting...");
@@ -321,7 +294,6 @@ export async function getServerSideProps() {
   if (res) {
     data = await res.json();
   }
-  console.log(data.data);
   return {
     props: {
       products: data.data || "",

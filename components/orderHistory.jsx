@@ -1,8 +1,7 @@
 import Image from "next/image";
-import styles from "../styles/components/OrderItem.module.scss";
-import EditOrderDialog from "./editOrder";
+import styles from "../styles/components/OrderHistory.module.scss";
 
-export default function OrderItem({
+export default function OrderHistory({
     key,
     index,
     order_id,
@@ -19,72 +18,47 @@ export default function OrderItem({
     street_address,
     weight,
     first_name,
-    last_name
+    last_name,
+    kind = "farm"
 }) {
-
-  
   return (
-    <div className={styles.orderItem}>
-        <div>
-          <p className={styles.orderItem_orderIdBold}>Order id:</p>
-          <p className={styles.orderItem_orderId}>{order_id}</p>
-        </div> 
+    <div className={styles.orderHistory}>
+      <div>
+        <p className={styles.orderHistory_orderIdBold}>Order id:</p>
+        <p className={styles.orderHistory_orderId}>{order_id}</p>
+      </div>
 
-        <div className={styles.orderItem_image}>
+      <div className={styles.orderHistory_image}>
         <Image
-            className={styles.orderItem_image}
-            src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}  
-            width={100}
-            height={100}
+          className={styles.orderHistory_image}
+          src={`${process.env.NEXT_PUBLIC_API_LINK}static/${image}`}
+          width={200}
+          height={200}
         />
-        </div>
+      </div>
 
+      <div>
+        <p className={styles.orderHistory_name}>{product_name}</p>
+        <p className={styles.orderHistory_desc}>Qty: {amount}</p>
+      </div>
+      
         <div>
-          <p className={styles.orderItem_name}>{product_name}</p>
-          <p className={styles.orderItem_desc}>Qty: {amount}</p>
-        </div>
-
-        <div>
-          <p className={styles.orderItem_descTitle}>Weight:</p>
-          <p className={styles.orderItem_desc}>{weight}kg</p>
+          <p className={styles.orderHistory_descTitle}>Note:</p>
+          <p className={styles.orderHistory_desc}>{note ? note:"-"}</p>
         </div> 
 
-        <div>
-          <p className={styles.orderItem_descTitle}>Note:</p>
-          <p className={styles.orderItem_desc}>{note ? note:"-"}</p>
-        </div> 
+      <div>
+        <p className={styles.orderHistory_descTitle}>Collection Method:</p>
+        <p className={styles.orderHistory_desc}>
+          {is_delivery ? "Delivery" : "Pick Up"}
+        </p>
+      </div>
 
         <div>
-          <p className={styles.orderItem_descTitle}>Status:</p>
-          <p className={styles.orderItem_desc}>{status}</p>
-        </div>
-        
-        <div>
-          <p className={styles.orderItem_descTitle}>Price:</p>
-          <p className={styles.orderItem_desc}>${price}</p>
+            <p className={styles.orderHistory_descTitle}>Pick-Up Address:</p>
+            <p className={styles.orderHistory_desc}>{is_delivery ? `${street_address}` : "-"}</p>
         </div> 
 
-        <div>
-          <p className={styles.orderItem_descTitle}>Collection Method:</p>
-          <p className={styles.orderItem_desc}>{is_delivery? "Delivery":"Pick Up"}</p>
-        </div> 
-
-        <div>
-          <p className={styles.orderItem_descTitle}>Recipient:</p>
-          <p className={styles.orderItem_desc}>{first_name} {last_name}</p>
-        </div> 
-        
-        <div>
-          <p className={styles.orderItem_descTitle}>Delivery Address:</p>
-          <p className={styles.orderItem_desc}>{is_delivery? `${street_address}, ${state}, ${city} ${postal_code}` :"-"}</p>
-        </div> 
-
-        <div>
-          <EditOrderDialog
-          key={index}
-          order_id={order_id}
-          />
-        </div>
     </div>
   );
 }

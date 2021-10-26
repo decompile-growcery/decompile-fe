@@ -120,9 +120,9 @@ export default function FarmerProduct() {
                 <option value="1">Fruit</option>
                 <option value="2">Vegetables</option>
                 <option value="3">Dairy</option>
-                <option value="1">Meat</option>
-                <option value="2">Grains</option>
-                <option value="3">Others</option>
+                <option value="4">Meat</option>
+                <option value="5">Grains</option>
+                <option value="6">Others</option>
               </select>
             </div>
             <h1>Media Management</h1>

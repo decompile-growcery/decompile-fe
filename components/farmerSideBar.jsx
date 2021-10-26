@@ -11,7 +11,7 @@ import logo from "../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
-const drawerWidth = 200;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +59,7 @@ function ResponsiveDrawer(props) {
     <div className={styles.sidebar_item}>
       <div />
       <span className={styles.sidebar_logo}>
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo" width={200}/>
       </span>
       <h3 className={styles.sidebar_title}>Products</h3>
       <List className={styles.sidebar_list}>

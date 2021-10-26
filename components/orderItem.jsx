@@ -53,18 +53,15 @@ export default function OrderItem({
           <p className={styles.orderItem_desc}>Qty: {amount}</p>
         </div>
         
-        {kind == "farm" ?  <div>
+        <div>
           <p className={styles.orderItem_descTitle}>Recipient:</p>
           <p className={styles.orderItem_desc}>{first_name} {last_name}</p>
         </div> 
-        : null}
 
-        {kind == "farm" ? 
         <div>
-        <p className={styles.orderItem_descTitle}>Weight:</p>
-        <p className={styles.orderItem_desc}>{weight}kg</p>
-        </div> 
-        : null}
+          <p className={styles.orderItem_descTitle}>Weight:</p>
+          <p className={styles.orderItem_desc}>{weight}kg</p>
+        </div>
       
         <div>
           <p className={styles.orderItem_descTitle}>Note:</p>
@@ -85,27 +82,23 @@ export default function OrderItem({
         </p>
       </div>
 
-        {kind == "farm" ? <div>
+      <div>
           <p className={styles.orderItem_descTitle}>Recipient:</p>
           <p className={styles.orderItem_desc}>{first_name} {last_name}</p>
-        </div> : <div></div>}
+        </div>
         
-        {kind == "farm" ? <div>
+        <div>
           <div>
             <p className={styles.orderItem_descTitle}>Delivery Address:</p>
             <p className={styles.orderItem_desc}>{is_delivery? `${street_address}, ${state}, ${city} ${postal_code}` :"-"}</p>
           </div> 
-        </div> : <div>
-            <p className={styles.orderItem_descTitle}>Pick-Up Address:</p>
-            <p className={styles.orderItem_desc}>{is_delivery ? `${street_address}` : "-"}</p>
-          </div> }
+        </div>
         
-        {kind == "farm" ? <div>
           <EditOrderDialog
           key={index}
           order_id={order_id}
           />
-        </div> : <div></div>}
+        </div>
     </div>
   );
 }

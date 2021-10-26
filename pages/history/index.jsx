@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import OrderItem from "../../components/orderItem";
+import OrderHistory from "../../components/orderHistory";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/History.module.scss";
 import Grid from "@material-ui/core/Grid";
@@ -49,7 +49,7 @@ export default function History() {
           </Grid>
           <hr className={styles.history_line} />
           {orderList.map((c, i) => (
-            <OrderItem
+            <OrderHistory
                 key={i}
                 index={i}
                 order_id={c.order_id}

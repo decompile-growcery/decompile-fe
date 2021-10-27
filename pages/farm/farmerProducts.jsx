@@ -117,7 +117,9 @@ export default function FarmerProduct() {
             <p className={styles.products_productTitles_unitPrice}>
               Unit Price
             </p>
-            <p className={styles.products_productTitles_shipping}>Shipping</p>
+            <p>
+              Delete
+            </p>
           </div>
           <hr className={styles.products_line} />
           {products}

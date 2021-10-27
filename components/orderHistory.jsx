@@ -7,19 +7,10 @@ export default function OrderHistory({
     order_id,
     image,
     product_name,
-    status,
-    price,
     amount,
     note,
     is_delivery,
-    city,
-    state,
-    postal_code,
     street_address,
-    weight,
-    first_name,
-    last_name,
-    kind = "farm"
 }) {
   return (
     <div className={styles.orderHistory}>
@@ -50,15 +41,14 @@ export default function OrderHistory({
       <div>
         <p className={styles.orderHistory_descTitle}>Collection Method:</p>
         <p className={styles.orderHistory_desc}>
-          {is_delivery ? "Delivery" : "Pick Up"}
+          {is_delivery? "Delivery" : "Pick Up"}
         </p>
       </div>
 
         <div>
             <p className={styles.orderHistory_descTitle}>Pick-Up Address:</p>
-            <p className={styles.orderHistory_desc}>{is_delivery ? `${street_address}` : "-"}</p>
+            <p className={styles.orderHistory_desc}>{!is_delivery? `${street_address}` : "-"}</p>
         </div> 
-
     </div>
   );
 }

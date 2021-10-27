@@ -1,23 +1,18 @@
 import Image from "next/image";
 import styles from "../styles/components/FarmerProductItem.module.scss";
 import useUser from "../lib/hooks/useUser";
-import Link from "next/link";
+import { Trash } from "react-feather";
+import DeleteDialog from "./deleteDialog";
 
 export default function FarmerProductItem({
   key,
+  index,
   product_id,
-  farm_id,
-  farm_name,
-  farm_address,
   product_name,
-  product_desc,
   product_price,
   unit_weight,
   unit_name,
   stock,
-  is_fresh,
-  discount,
-  image_id,
   image,
 }) {
   const user = useUser();
@@ -54,8 +49,11 @@ export default function FarmerProductItem({
         </p>
       </div>
 
-      <div className={styles.farmerProductItem_shipping}>
-        <p className={styles.farmerProductItem_descTitle}>Self-pickup only</p>
+      <div>
+          <DeleteDialog
+            key={index}
+            product_id={product_id}
+          />
       </div>
     </div>
   );

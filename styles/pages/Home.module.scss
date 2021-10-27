@@ -52,4 +52,11 @@
         margin-top: 2vw;
         padding-bottom: 2vw;
     }
+
+    &_copyright {
+        text-align: center;
+        color: #FFFFFF;
+        bottom: 0px;
+        background-color: $darker-green;
+    }
 }

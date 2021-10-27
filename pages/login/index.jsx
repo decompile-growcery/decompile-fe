@@ -76,11 +76,6 @@ export default function Login() {
             type="password"
             placeholder="min. 8 characters"
           />
-          <div className={styles.login_form_forgotPassword}>
-            <Link href="/forgot-password">
-              <a>I forgot my password</a>
-            </Link>
-          </div>
           <button className={styles.login_form_submitBtn}>login</button>
           <div className={styles.login_form_registerPrompt}>
             <p>Don&apos;t have an account?</p>

@@ -1,0 +1,50 @@
+@import '../utils/fonts';
+@import '../utils/colors';
+@import "../utils/breakpoints";
+
+.footer {
+    @include fontPrimary;
+    background-color: $darker-green;
+    margin-top: 8vh;
+    padding-top: 5vh;
+    bottom: 0px;
+
+    @media screen and (max-width: $mobile) {
+        padding-bottom: 10vh;
+      }
+
+    &_image {
+        margin: 5vw;
+    }
+
+    &_contact {
+        font-size: 1.2vw;
+        font-weight: 700;
+        color: #FFFFFF;
+    }
+
+    &_email {
+        font-size: 1vw;
+        font-weight: lighter;
+        color: #FFFFFF;
+    }
+
+    &_copyright {
+        font-size: 0.8vw;
+        text-align: center;
+        color: #FFFFFF;
+        bottom: 0px;
+        justify-content:flex-end;
+    }
+
+    &_one {
+        padding-left: 3vw;
+    }
+
+    &_two {
+        padding-top: 20vh;
+        height: inherit;
+        text-align: center;
+        bottom: 0px;
+    }
+}

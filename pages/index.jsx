@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ProductList from "../components/productList";
+import Footer from "../components/footer";
 import HomePageSection from "../components/homePageSection";
 import Banner from "../components/banner";
 import Navbar from "../components/navbar";
@@ -89,10 +90,8 @@ export default function Home({ products }) {
         </div>
         <HomePageSection icon={<Award />} title="Products" />
         <ProductList products={products} />
-        <div className={styles.home_feedback}>
-            <a href = "mailto: growcerydecompile@gmail.com">Contact Us</a>
-        </div>
-      </main>
+        </main>
+        <Footer />
     </div>
   );
 }

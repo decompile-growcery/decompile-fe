@@ -1,4 +1,4 @@
-export default async function postData(data, url, token = false) {
+export default async function deleteData(data, url, token = false) {
   let isError = "";
   let result = "";
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_LINK}${url}`, {

@@ -58,12 +58,6 @@ export default function FarmerProduct() {
   const [unit_weight, handleChangeWeight] = useForm("");
   const [unit_name, handleChangeUnitName] = useForm("");
   const [stock, handleChangeStock] = useForm("");
-  const [country, handleChangeCountry] = useForm("");
-  const [city, handleChangeCity] = useForm("");
-  const [postalCode, handleChangePostCode] = useForm("");
-  const [addressLine1, handleChangeAddressLine1] = useForm("");
-  const [addressLine2, handleChangeAddressLine2] = useForm("");
-  const [availablity, handleChangeAvailablity] = useForm("");
 
   return (
     <div>
@@ -180,25 +174,6 @@ export default function FarmerProduct() {
             >
               <label>Stock*</label>
               <input value={stock} onChange={handleChangeStock} />
-            </div>
-
-            <div
-              className={styles.addProducts_productInformationContainer_isFresh}
-            >
-              <label>Is Fresh*</label>
-              <select
-                value={is_fresh}
-                onChange={(e) => {
-                  setIsFresh(e.target.value);
-                }}
-              >
-                <option value="true" onChange={setIsFresh}>
-                  true
-                </option>
-                <option value="false" onChange={setIsFresh}>
-                  false
-                </option>
-              </select>
             </div>
             <div
               className={styles.addProducts_productInformationContainer_endBtn}

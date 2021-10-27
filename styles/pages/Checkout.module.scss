@@ -9,6 +9,18 @@
     padding: 0 100px;
     margin: 20px 0 100px;
 
+    &_button
+    {
+        @include buttonPrimary;
+        display: block;
+        width: fit-content;
+        border-radius: 10px;
+        border: none;
+        font-size: 18px;
+        padding: 5px 55px;
+        margin-top: 20px;
+    }
+    
     &_orderOptions
     {
         display: flex;

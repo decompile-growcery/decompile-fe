@@ -7,13 +7,25 @@ import paypal from "../../public/paypal.png";
 import CheckoutItem from "../../components/checkoutItem";
 import postData from "../../lib/utils/postData";
 import getData from "../../lib/utils/getData";
+import Link from "next/link";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
 
 export default function Cart() {
   const user = useUser();
   const router = useRouter();
+  const [address, setAddress] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_LINK}address`, {
+      headers: {
+        Authorization: `Bearer ${user}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setAddress(data.data[0]));
+  }, []);
 
   const options = {
     pickup: "pick-up",
@@ -146,6 +158,15 @@ export default function Cart() {
             <Image src={paypal} />
           </div>
         </div>
+        <div className={styles.checkout_container}>
+          <h4>Delivery Address</h4>
+          {address == null? <div>
+            <p> Please add an address </p>
+            <Link href="/account/address">
+              <a className={styles.checkout_button}>Add Address</a>
+            </Link>
+          </div> : <div> <p>{address.street_address}, {address.state}, {address.city}, {address.postal_code} </p> </div>}
+        </div>
         <div className={styles.checkout_float}>
           <div className={styles.checkout_float_prompt}>
             <p>
@@ -156,7 +177,7 @@ export default function Cart() {
               className={styles.checkout_float_button}
               onClick={handleCheckout}
             >
-              place order
+              Place Order
             </button>
           </div>
         </div>

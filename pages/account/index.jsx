@@ -51,7 +51,9 @@ export default function Account() {
             </p>
           </div> 
         : <div className={styles.account_field}>
-            <p>Please add an address by clicking edit profile.</p>
+            <Link href="/account/address">
+              <a className={styles.account_button}>Add Address</a>
+            </Link>
           </div> }
         <Link href="/account/edit">
           <a className={styles.account_button}>Edit Profile</a>

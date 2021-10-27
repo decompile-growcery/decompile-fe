@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Tooltip } from "@material-ui/icons";
+import { Tooltip } from "@material-ui/core";
 import Navbar from "../../components/navbar";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/Checkout.module.scss";

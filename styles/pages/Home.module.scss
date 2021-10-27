@@ -6,7 +6,7 @@
     @include fontPrimary;
     padding: 0 2rem;
     padding-top: 5vh;
-    background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09), 	#FFFFFF, 	#FFFFFF, 	#FFFFFF 100%);
+    background: linear-gradient(180deg, #DBEDCC 0%, rgba(219, 237, 204, 0.09), 	#FFFFFF, 	#FFFFFF, #FFFFFF 100%);
     @media screen and (max-width: $mobile) {
         background: #FFFFFF;
       }
@@ -44,5 +44,12 @@
         @media screen and (max-width: $mobile) {
             margin: 0 2vw;
           }
+    }
+
+    &_feedback {
+        justify-content: center;
+        text-align: center;
+        margin-top: 2vw;
+        padding-bottom: 2vw;
     }
 }

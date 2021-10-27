@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Tooltip } from "@material-ui/core";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../../components/navbar";
@@ -63,12 +63,14 @@ export default function Login({ product }) {
                   /{product.unit_weight} {product.unit_name}
                 </span>
               </h2>
-              <button
-                className={styles.product_btn}
-                onClick={() => addToCart(product.product_id)}
-              >
-                Add to Cart
-              </button>
+              <Tooltip title="Add product to cart">
+                <button
+                  className={styles.product_btn}
+                  onClick={() => addToCart(product.product_id)}
+                >
+                  Add to Cart
+                </button>
+              </Tooltip>
               <div className={styles.product_description}>
                 <h3>Product Description</h3>
                 <p>{product.product_desc}</p>

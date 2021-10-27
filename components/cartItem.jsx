@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import { AddCircle, RemoveCircle, Delete } from "@material-ui/icons";
 import postData from "../lib/utils/postData";
 import deleteData from "../lib/utils/deleteData";
@@ -53,19 +53,25 @@ export default function CartItem({
       <p className={styles.cartItem_name}>{name}</p>
       <p>${price}</p>
       <div className={styles.cartItem_quantity}>
-        <IconButton onClick={removeItem}>
-          <RemoveCircle />
-        </IconButton>
+        <Tooltip title="Decrease item">
+          <IconButton onClick={removeItem}>
+            <RemoveCircle />
+          </IconButton>
+        </Tooltip>
         <span>{qty}</span>
-        <IconButton onClick={addItem}>
-          <AddCircle />
-        </IconButton>
+        <Tooltip title="Increase item">
+          <IconButton onClick={addItem}>
+            <AddCircle />
+          </IconButton>
+        </Tooltip>
       </div>
       <p>Total: ${(qty * price).toFixed(2)}</p>
       <div className={styles.cartItem_delete}>
-        <IconButton onClick={() => deleteItem(id)}>
-          <Delete />
-        </IconButton>
+        <Tooltip title="Remove item from cart">
+          <IconButton onClick={() => deleteItem(id)}>
+            <Delete />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

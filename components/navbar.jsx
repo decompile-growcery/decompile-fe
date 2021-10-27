@@ -6,6 +6,7 @@ import {
   BottomNavigationAction,
   Menu,
   MenuItem,
+  Tooltip,
 } from "@material-ui/core";
 import {
   ShoppingCartOutlined,
@@ -18,7 +19,6 @@ import Image from "next/image";
 import logo from "../public/logo.png";
 import styles from "../styles/components/Navbar.module.scss";
 import useUser from "../lib/hooks/useUser";
-import searchResult from "./searchResult";
 import { useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Cookies from "js-cookie";
@@ -81,25 +81,20 @@ export default function Navbar() {
                   <a> History </a>
                 </Link>
                 <Link href="/cart">
-                  <IconButton>
-                    <ShoppingCartOutlined />
-                  </IconButton>
+                  <Tooltip title="Shopping Cart">
+                    <IconButton>
+                      <ShoppingCartOutlined />
+                    </IconButton>
+                  </Tooltip>
                 </Link>
               </>
             )}
-            <IconButton onClick={handleClick}>
-              <AccountCircleOutlined />
-            </IconButton>
+            <Tooltip title="Account">
+              <IconButton onClick={handleClick}>
+                <AccountCircleOutlined />
+              </IconButton>
+            </Tooltip>
           </div>
-          {user && (
-            <Link href="/cart">
-              <div className={styles.navbar_shoppingCart}>
-                <IconButton>
-                  <ShoppingCartOutlined />
-                </IconButton>
-              </div>
-            </Link>
-          )}
         </Toolbar>
       </AppBar>
       <Menu

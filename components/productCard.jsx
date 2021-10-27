@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Grid } from "@material-ui/core";
+import { Grid, Tooltip } from "@material-ui/core";
 import styles from "../styles/components/ProductCard.module.scss";
 
 export default function productCard({
@@ -30,7 +30,9 @@ export default function productCard({
           </span>
         </h4>
         <Link href={`/product/${id}`}>
-          <button className={styles.productCard_btn}>View Product</button>
+          <Tooltip title="View product's details">
+            <button className={styles.productCard_btn}>View Product</button>
+          </Tooltip>
         </Link>
       </div>
     </Grid>

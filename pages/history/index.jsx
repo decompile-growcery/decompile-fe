@@ -4,9 +4,7 @@ import OrderHistory from "../../components/orderHistory";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/History.module.scss";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
-import Navbar from '../../components/navbar'
+import Navbar from "../../components/navbar";
 
 export default function History() {
   const user = useUser();
@@ -33,28 +31,28 @@ export default function History() {
       <main className={styles.history}>
         <div>
           <div className={styles.history_container}>
-          <Grid container>
-            <Grid item xs={8}>
-            <div>
-              <h1>My Order History</h1>
-            </div> 
+            <Grid container>
+              <Grid item xs={8}>
+                <div>
+                  <h1>My Order History</h1>
+                </div>
+              </Grid>
+              <Grid item xs={3}></Grid>
+              <Grid item xs={1}>
+                <p className={styles.history_countOrder}>
+                  {orderList.length} Order(s)
+                </p>
+              </Grid>
             </Grid>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={1}>
-              <p className={styles.history_countOrder}>
-                {orderList.length} Order(s)
-              </p>
-            </Grid>
-          </Grid>
-          <hr className={styles.history_line} />
-          {orderList.map((c, i) => (
-            <OrderHistory
+            <hr className={styles.history_line} />
+            {orderList.map((c, i) => (
+              <OrderHistory
                 key={i}
                 index={i}
                 order_id={c.order_id}
                 image={c.image}
                 product_name={c.product_name}
-                status_id = {c.status_id}
+                status_id={c.status_id}
                 status={c.status}
                 price={c.price}
                 amount={c.amount}
@@ -62,9 +60,9 @@ export default function History() {
                 is_delivery={c.is_delivery}
                 street_address={c.farm_address}
                 kind="user"
-            />
+              />
             ))}
-        </div>
+          </div>
         </div>
       </main>
     </div>

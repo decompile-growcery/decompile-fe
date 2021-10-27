@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Tooltip } from "@material-ui/core";
 import Head from "next/head";
 import deleteData from "../../lib/utils/deleteData";
 import CartItem from "../../components/cartItem";
@@ -104,12 +105,14 @@ export default function Cart() {
               Total ({cart.length} Products):{" "}
               <span className={styles.cart_checkout_price}>${totalCost}</span>
             </p>
-            <button
-              className={styles.cart_checkout_button}
-              onClick={handleCheckout}
-            >
-              checkout
-            </button>
+            <Tooltip title="Proceed to checkout">
+              <button
+                className={styles.cart_checkout_button}
+                onClick={handleCheckout}
+              >
+                checkout
+              </button>
+            </Tooltip>
           </div>
         </div>
       </main>

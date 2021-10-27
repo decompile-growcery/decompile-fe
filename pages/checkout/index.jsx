@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import { Tooltip } from "@material-ui/icons";
 import Navbar from "../../components/navbar";
 import useUser from "../../lib/hooks/useUser";
 import styles from "../../styles/pages/Checkout.module.scss";
@@ -160,12 +161,22 @@ export default function Cart() {
         </div>
         <div className={styles.checkout_container}>
           <h4>Delivery Address</h4>
-          {address == null? <div>
-            <p> Please add an address </p>
-            <Link href="/account/address">
-              <a className={styles.checkout_button}>Add Address</a>
-            </Link>
-          </div> : <div> <p>{address.street_address}, {address.state}, {address.city}, {address.postal_code} </p> </div>}
+          {address == null ? (
+            <div>
+              <p> Please add an address </p>
+              <Link href="/account/address">
+                <a className={styles.checkout_button}>Add Address</a>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              {" "}
+              <p>
+                {address.street_address}, {address.state}, {address.city},{" "}
+                {address.postal_code}{" "}
+              </p>{" "}
+            </div>
+          )}
         </div>
         <div className={styles.checkout_float}>
           <div className={styles.checkout_float_prompt}>
@@ -173,12 +184,14 @@ export default function Cart() {
               Total Payment:
               <span className={styles.checkout_float_price}>${totalCost}</span>
             </p>
-            <button
-              className={styles.checkout_float_button}
-              onClick={handleCheckout}
-            >
-              Place Order
-            </button>
+            <Tooltip title="Proceed to Payment">
+              <button
+                className={styles.checkout_float_button}
+                onClick={handleCheckout}
+              >
+                Place Order
+              </button>
+            </Tooltip>
           </div>
         </div>
       </main>

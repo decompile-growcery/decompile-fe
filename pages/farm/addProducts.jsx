@@ -5,8 +5,6 @@ import styles from "../../styles/pages/AddProduct.module.scss";
 import FarmerNavbar from "../../components/farmNavbar";
 import FarmerBreadcrumbs from "../../components/farmerBreadcrumbs";
 import ResponsiveDrawer from "../../components/farmerSideBar";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/dist/client/router";
 import { ToastContainer, toast } from "react-toastify";
 import useForm from "../../lib/hooks/useForm";
@@ -201,63 +199,6 @@ export default function FarmerProduct() {
                   false
                 </option>
               </select>
-            </div>
-
-            <h1>Shipping Information</h1>
-
-            <div
-              className={
-                styles.addProducts_productInformationContainer_shippingInformation
-              }
-            >
-              <label>Self Pick Up Address</label>
-              <div
-                className={
-                  styles.addProducts_productInformationContainer_shippingInformation_address
-                }
-              >
-                <input
-                  value={country}
-                  onChange={handleChangeCountry}
-                  placeholder="Country"
-                />
-
-                <input
-                  value={addressLine1}
-                  onChange={handleChangeAddressLine1}
-                  placeholder="Address Line 1"
-                />
-
-                <input
-                  value={city}
-                  onChange={handleChangeCity}
-                  placeholder="State/City"
-                />
-
-                <input
-                  value={addressLine2}
-                  onChange={handleChangeAddressLine2}
-                  placeholder="Address Line 2"
-                />
-
-                <input
-                  value={postalCode}
-                  onChange={handleChangePostCode}
-                  placeholder="Postal Code"
-                />
-              </div>
-            </div>
-            <div
-              className={
-                styles.addProducts_productInformationContainer_availability
-              }
-            >
-              <label>Delivery Availablity</label>
-              <input
-                value={availablity}
-                onChange={handleChangeAvailablity}
-                placeholder="Availablity"
-              />
             </div>
             <div
               className={styles.addProducts_productInformationContainer_endBtn}

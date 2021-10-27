@@ -6,9 +6,7 @@ import styles from "../../styles/pages/Order.module.scss";
 import FarmerNavbar from "../../components/farmNavbar";
 import FarmerBreadcrumbs from "../../components/farmerBreadcrumbs";
 import ResponsiveDrawer from "../../components/farmerSideBar";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { Tooltip, Grid, Button, ButtonGroup } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 export default function Orders() {
@@ -123,24 +121,36 @@ export default function Orders() {
                       variant="text"
                       aria-label="text primary button group"
                     >
-                      <CustomButton onClick={() => getAllOrders()}>
-                        All Orders
-                      </CustomButton>
-                      <CustomButton onClick={() => filterOrder(1)}>
-                        Waiting For Payment
-                      </CustomButton>
-                      <CustomButton onClick={() => filterOrder(2)}>
-                        Confirmed
-                      </CustomButton>
-                      <CustomButton onClick={() => filterOrder(3)}>
-                        Shipped
-                      </CustomButton>
-                      <CustomButton onClick={() => filterOrder(4)}>
-                        Ready
-                      </CustomButton>
-                      <CustomButton onClick={() => filterOrder(5)}>
-                        Completed
-                      </CustomButton>
+                      <Tooltip title="Display all orders">
+                        <CustomButton onClick={() => getAllOrders()}>
+                          All Orders
+                        </CustomButton>
+                      </Tooltip>
+                      <Tooltip title="Display orders waiting for payment">
+                        <CustomButton onClick={() => filterOrder(1)}>
+                          Waiting For Payment
+                        </CustomButton>
+                      </Tooltip>
+                      <Tooltip title="Display all confirmed orders">
+                        <CustomButton onClick={() => filterOrder(2)}>
+                          Confirmed
+                        </CustomButton>
+                      </Tooltip>
+                      <Tooltip title="Display shipped orders">
+                        <CustomButton onClick={() => filterOrder(3)}>
+                          Shipped
+                        </CustomButton>
+                      </Tooltip>
+                      <Tooltip title="Display ready orders">
+                        <CustomButton onClick={() => filterOrder(4)}>
+                          Ready
+                        </CustomButton>
+                      </Tooltip>
+                      <Tooltip title="Display completed orders">
+                        <CustomButton onClick={() => filterOrder(5)}>
+                          Completed
+                        </CustomButton>
+                      </Tooltip>
                     </ButtonGroup>
                   </div>
                 </Grid>

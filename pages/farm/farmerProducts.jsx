@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Tooltip } from "@material-ui/core";
 import Head from "next/head";
 import FarmerProductItem from "../../components/farmerProductItem";
 import useUser from "../../lib/hooks/useUser";
@@ -48,19 +49,19 @@ export default function FarmerProduct() {
     />
   ));
 
-    useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_LINK}my-products`, {
-            headers: {
-                Authorization: `Bearer ${user}`,
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setProducts(data.data);
-                setFiltered(productList);
-                mapProducts();
-            });
-    }, []);
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_LINK}my-products`, {
+      headers: {
+        Authorization: `Bearer ${user}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.data);
+        setFiltered(productList);
+        mapProducts();
+      });
+  }, []);
 
   const mapProducts = () => {
     products = [];
@@ -99,11 +100,13 @@ export default function FarmerProduct() {
             {productList.length} Products(s)
           </p>
           <Link href="/farm/addProducts">
-            <button
-              className={styles.products_addProductContainer_addProductButton}
-            >
-              + Add New Product
-            </button>
+            <Tooltip title="Add a new product">
+              <button
+                className={styles.products_addProductContainer_addProductButton}
+              >
+                + Add New Product
+              </button>
+            </Tooltip>
           </Link>
         </div>
         <div className={styles.products_container}>

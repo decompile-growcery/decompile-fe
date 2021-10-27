@@ -159,10 +159,9 @@ export default function Cart() {
             <Image src={paypal} />
           </div>
         </div>
-        <div className={styles.checkout_container}>
-          <h4>Delivery Address</h4>
+        <div>
           {address == null ? (
-            <div>
+            <div className={styles.checkout_container}>
               <p> Please add an address </p>
               <Link href="/account/address">
                 <a className={styles.checkout_button}>Add Address</a>
@@ -170,13 +169,16 @@ export default function Cart() {
             </div>
           ) : (
             <div>
+            </div>
+          )}
+          {option === options.delivery && address !== null && <div className={styles.checkout_container}>
+            <h4>Delivery Address</h4>
               {" "}
               <p>
                 {address.street_address}, {address.state}, {address.city},{" "}
                 {address.postal_code}{" "}
               </p>{" "}
-            </div>
-          )}
+            </div> }
         </div>
         <div className={styles.checkout_float}>
           <div className={styles.checkout_float_prompt}>

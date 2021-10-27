@@ -75,7 +75,8 @@ export default function Navbar() {
           </form>
           <div className={styles.navbar_items}>
             <Link href="/">Home</Link>
-            {user != null?<>
+            {user && (
+              <>
                 <Link href="/history">
                   <a> History </a>
                 </Link>
@@ -86,16 +87,13 @@ export default function Navbar() {
                     </IconButton>
                   </Tooltip>
                 </Link>
-                <Tooltip title="Account">
+              </>
+            )}
+            <Tooltip title="Account">
               <IconButton onClick={handleClick}>
                 <AccountCircleOutlined />
               </IconButton>
             </Tooltip>
-              </> : <Tooltip title="Account">
-              <IconButton onClick={handleClick}>
-                <AccountCircleOutlined />
-              </IconButton>
-            </Tooltip>}
           </div>
         </Toolbar>
       </AppBar>

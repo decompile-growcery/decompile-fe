@@ -38,7 +38,7 @@ export default async function postData(
     .catch((e) => {
       isError = true;
     });
-
+  
   if (!isError) result = await response.json();
 
   return [isError, result];

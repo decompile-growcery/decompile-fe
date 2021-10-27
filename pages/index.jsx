@@ -89,6 +89,9 @@ export default function Home({ products }) {
         </div>
         <HomePageSection icon={<Award />} title="Products" />
         <ProductList products={products} />
+        <div className={styles.home_feedback}>
+            <a href = "mailto: growcerydecompile@gmail.com">Contact Us</a>
+        </div>
       </main>
     </div>
   );
